@@ -1,0 +1,101 @@
+.bg {
+    /* The image used */
+    background-image: url("404.jpg");
+
+    /* Full height */
+    /*height: 100%;*/
+    /*width: 100%;*/
+
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+#home_btn_404 {
+position:absolute;
+margin-left:-50px;
+left:50%;
+bottom:50px;
+}
+
+.navbar {
+    position: sticky;
+    top: 0;
+}
+
+.footer {
+    position: fixed;
+    text-align: center;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 30px;   /* Height of the footer */
+    background: LightSteelBlue;
+    z-index: 1000;
+}
+
+.brandName
+{
+    padding-left: 5px;
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    color: rgb(5, 30, 101);
+    font-size:150%;
+    font-weight: bold;
+    font-family: Audiowide;
+    text-align:center;
+    text-decoration: none;
+}
+
+.navLink
+{
+    color: rgb(5, 30, 101);
+    font-size:125%;
+    font-family: FontAwesome;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.dropdown-menu.show {
+    z-index: 1050 !important;
+}
+
+.siesmic_sections {
+    width: 100%;
+    height: 100%
+  }
+
+.spanned-col {
+    background-color: #b0c4de;
+    font-weight: bold;
+    text-align: center;
+}
+
+
+/* Responsive for mobile screens */
+@media (max-width: 600px) {
+    .brandName {
+        position: static;
+        transform: none;
+        display: block;
+        text-align: center;
+        font-size: 120%;
+        margin-top: 10px;
+        padding: 0 10px;
+        white-space: normal;
+    }
+}
