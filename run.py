@@ -7,8 +7,12 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_bcrypt import Bcrypt
 from datetime import datetime
 
+from flask import Flask, jsonify, request 
+from flask_cors import CORS 
+from flask_api_endpoints import api_bp
 
 server = Flask(__name__)
+CORS(server)
 app = Dash(__name__, use_pages=True, 
            external_stylesheets=[
                dbc.themes.UNITED, 
@@ -20,6 +24,8 @@ app = Dash(__name__, use_pages=True,
            # ],
            server=server, suppress_callback_exceptions=True
         )
+
+server.register_blueprint(api_bp, url_prefix='/api')
 
 app.index_string = '''
 <!DOCTYPE html>
