@@ -1,4 +1,7 @@
+"use client"
+
 import type * as React from "react"
+import { useAuth } from "@/lib/auth-context"
 import {
   Home,
   Map,
@@ -63,6 +66,8 @@ const navigationItems = [
 ]
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
+  const { user, logout } = useAuth()
+  
   return (
     <Sidebar collapsible="icon" {...props}>
       <SidebarHeader>
@@ -104,13 +109,25 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
           <SidebarMenuItem>
             <div className="flex items-center gap-2 px-2 py-1.5">
               <Avatar className="h-8 w-8">
-                <AvatarFallback>АЖ</AvatarFallback>
+                <AvatarFallback>
+                  {user?.username?.slice(0, 2).toUpperCase() || "АЖ"}
+                </AvatarFallback>
               </Avatar>
               <div className="grid flex-1 text-left text-sm leading-tight">
-                <span className="truncate font-semibold">Аман Жумекешов</span>
-                <span className="truncate text-xs text-muted-foreground">Администратор</span>
+                <span className="truncate font-semibold">
+                  {user?.username || "Аман Жумекешов"}
+                </span>
+                <span className="truncate text-xs text-muted-foreground">
+                  {user?.role || "Администратор"}
+                </span>
               </div>
-              <Button variant="ghost" size="icon" className="h-8 w-8">
+              <Button 
+                variant="ghost" 
+                size="icon" 
+                className="h-8 w-8"
+                onClick={logout}
+                title="Выйти"
+              >
                 <LogOut className="h-4 w-4" />
               </Button>
             </div>

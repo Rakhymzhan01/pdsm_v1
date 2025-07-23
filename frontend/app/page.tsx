@@ -1,8 +1,24 @@
+"use client"
+
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { BarChart3, TrendingUp, MapPin, Activity, Database } from "lucide-react"
+import { BarChart3, TrendingUp, MapPin, Activity, Database, AlertCircle } from "lucide-react"
+import { useWells, useProductionData } from "@/hooks/use-api"
+import { withAuth } from "@/lib/auth-context"
 
-export default function HomePage() {
+function HomePage() {
+  const { data: wellsData, loading: wellsLoading, error: wellsError } = useWells()
+  const { data: productionData, loading: productionLoading, error: productionError } = useProductionData()
+
+  // Calculate statistics from real data
+  const activeWells = wellsData?.length || 0
+  const totalOilProduction = productionData?.reduce((sum: number, record: any) => {
+    return sum + (parseFloat(record.Qo_ton) || 0)
+  }, 0) || 0
+
+  const averageWaterCut = productionData?.length > 0 
+    ? productionData.reduce((sum: number, record: any) => sum + (parseFloat(record.Obv_percent) || 0), 0) / productionData.length
+    : 0
   return (
     <div className="flex-1 space-y-4 p-4 md:p-8 pt-6">
       <div className="flex items-center justify-between space-y-2">
@@ -13,6 +29,20 @@ export default function HomePage() {
         </div>
       </div>
 
+      {/* Error display */}
+      {(wellsError || productionError) && (
+        <Card className="border-red-200 bg-red-50">
+          <CardContent className="pt-6">
+            <div className="flex items-center gap-2 text-red-600">
+              <AlertCircle className="h-4 w-4" />
+              <span className="text-sm">
+                Ошибка загрузки данных: {wellsError || productionError}
+              </span>
+            </div>
+          </CardContent>
+        </Card>
+      )}
+
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
@@ -20,19 +50,29 @@ export default function HomePage() {
             <BarChart3 className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">428,113</div>
-            <p className="text-xs text-muted-foreground">тн с начала эксплуатации</p>
+            {productionLoading ? (
+              <div className="text-2xl font-bold animate-pulse">Loading...</div>
+            ) : (
+              <div className="text-2xl font-bold">
+                {totalOilProduction.toLocaleString('ru-RU', { maximumFractionDigits: 0 })}
+              </div>
+            )}
+            <p className="text-xs text-muted-foreground">тн за последний период</p>
           </CardContent>
         </Card>
 
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Активные скважины</CardTitle>
+            <CardTitle className="text-sm font-medium">Всего скважин</CardTitle>
             <Activity className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">57</div>
-            <p className="text-xs text-muted-foreground">действующих скважин</p>
+            {wellsLoading ? (
+              <div className="text-2xl font-bold animate-pulse">Loading...</div>
+            ) : (
+              <div className="text-2xl font-bold">{activeWells}</div>
+            )}
+            <p className="text-xs text-muted-foreground">в базе данных</p>
           </CardContent>
         </Card>
 
@@ -49,12 +89,18 @@ export default function HomePage() {
 
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Курс доллара</CardTitle>
+            <CardTitle className="text-sm font-medium">Средняя обводненность</CardTitle>
             <Database className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">₸485</div>
-            <p className="text-xs text-muted-foreground">-0.5% за день</p>
+            {productionLoading ? (
+              <div className="text-2xl font-bold animate-pulse">Loading...</div>
+            ) : (
+              <div className="text-2xl font-bold">
+                {averageWaterCut.toFixed(1)}%
+              </div>
+            )}
+            <p className="text-xs text-muted-foreground">по активным скважинам</p>
           </CardContent>
         </Card>
       </div>
@@ -207,3 +253,5 @@ export default function HomePage() {
     </div>
   )
 }
+
+export default withAuth(HomePage)

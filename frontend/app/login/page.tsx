@@ -7,16 +7,54 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { MapPin, User, Lock } from "lucide-react"
+import { MapPin, User, Lock, AlertCircle } from "lucide-react"
+import { apiClient } from "@/lib/api-client"
 
 export default function LoginPage() {
   const [username, setUsername] = useState("")
   const [password, setPassword] = useState("")
+  const [isLoading, setIsLoading] = useState(false)
+  const [error, setError] = useState("")
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    // Здесь будет логика авторизации
-    console.log("Login attempt:", { username, password })
+    setIsLoading(true)
+    setError("")
+    
+    try {
+      if (!username || !password) {
+        setError('Пожалуйста, введите имя пользователя и пароль')
+        return
+      }
+
+      // Call Flask API for authentication
+      const response = await apiClient.login(username, password)
+      
+      if (response.error) {
+        setError('Ошибка сервера: ' + response.error)
+        return
+      }
+
+      if (response.data) {
+        // Store authentication data
+        localStorage.setItem('authToken', 'authenticated-' + Date.now())
+        localStorage.setItem('userData', JSON.stringify({
+          username: username,
+          role: 'administrator',
+          loginTime: new Date().toISOString()
+        }))
+        
+        // Redirect to main dashboard
+        window.location.href = '/'
+      } else {
+        setError('Неверное имя пользователя или пароль')
+      }
+    } catch (error) {
+      console.error('Login error:', error)
+      setError('Ошибка подключения к серверу. Проверьте настройки сети.')
+    } finally {
+      setIsLoading(false)
+    }
   }
 
   return (
@@ -33,6 +71,13 @@ export default function LoginPage() {
         </CardHeader>
         <CardContent>
           <form onSubmit={handleSubmit} className="space-y-4">
+            {error && (
+              <div className="flex items-center gap-2 p-3 text-sm text-red-600 bg-red-50 border border-red-200 rounded-md">
+                <AlertCircle className="h-4 w-4" />
+                <span>{error}</span>
+              </div>
+            )}
+            
             <div className="space-y-2">
               <Label htmlFor="username">Пользователь</Label>
               <div className="relative">
@@ -45,6 +90,7 @@ export default function LoginPage() {
                   onChange={(e) => setUsername(e.target.value)}
                   className="pl-10"
                   required
+                  disabled={isLoading}
                 />
               </div>
             </div>
@@ -61,16 +107,27 @@ export default function LoginPage() {
                   onChange={(e) => setPassword(e.target.value)}
                   className="pl-10"
                   required
+                  disabled={isLoading}
                 />
               </div>
             </div>
 
-            <Button type="submit" className="w-full bg-orange-600 hover:bg-orange-700">
-              Войти
+            <Button 
+              type="submit" 
+              className="w-full bg-orange-600 hover:bg-orange-700"
+              disabled={isLoading}
+            >
+              {isLoading ? "Вход..." : "Войти"}
             </Button>
           </form>
 
-          <div className="mt-6 text-center text-sm text-muted-foreground">© 2025 Аман Жумекешов</div>
+          <div className="mt-6 text-center text-sm text-muted-foreground">
+            © 2025 Аман Жумекешов
+            <br />
+            <span className="text-xs opacity-75">
+              Для тестирования: username="test", password="test"
+            </span>
+          </div>
         </CardContent>
       </Card>
     </div>

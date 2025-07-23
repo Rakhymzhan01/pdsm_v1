@@ -126,4 +126,4 @@ def change_password(n_clicks, password, re_entered_password):
 
 
 if __name__ == "__main__":
-    server.run(debug=True)
+    server.run(debug=True, host="127.0.0.1", port=5001)
