@@ -16,7 +16,7 @@ function HomePage() {
     return sum + (parseFloat(record.Qo_ton) || 0)
   }, 0) || 0
 
-  const averageWaterCut = productionData?.length > 0 
+  const averageWaterCut = productionData && productionData.length > 0 
     ? productionData.reduce((sum: number, record: any) => sum + (parseFloat(record.Obv_percent) || 0), 0) / productionData.length
     : 0
   return (

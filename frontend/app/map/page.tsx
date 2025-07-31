@@ -1,9 +1,10 @@
+"use client"
+
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { 
   MapPin, 
-  Layers, 
   ZoomIn, 
   ZoomOut, 
   RotateCw,
@@ -12,8 +13,6 @@ import {
   Eye,
   EyeOff
 } from "lucide-react"
-"use client"
-
 import MapComponent from "@/components/map/MapComponent"
 import { useState } from "react"
 
@@ -197,7 +196,6 @@ export default function MapPage() {
               <MapComponent
                 showFaults={showFaults}
                 showBoundaries={showBoundaries}
-                showContours={showContours}
               />
             </div>
           </CardContent>

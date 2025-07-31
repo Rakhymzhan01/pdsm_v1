@@ -1,7 +1,7 @@
 'use client'
 
-import React, { useState, useRef, useEffect } from 'react'
-import Map, { Marker, Popup, Layer, Source } from 'react-map-gl'
+import React, { useState, useRef } from 'react'
+import Map, { Marker, Popup, Layer, Source } from 'react-map-gl/mapbox'
 import * as d3 from 'd3'
 import 'mapbox-gl/dist/mapbox-gl.css'
 
@@ -20,8 +20,6 @@ interface MapComponentProps {
   wells?: Well[]
   showFaults?: boolean
   showBoundaries?: boolean
-  showContours?: boolean
-  selectedLayers?: string[]
 }
 
 const MAPBOX_TOKEN = process.env.NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN
@@ -37,9 +35,7 @@ const defaultWells: Well[] = [
 export default function MapComponent({ 
   wells = defaultWells, 
   showFaults = false, 
-  showBoundaries = true, 
-  showContours = true,
-  selectedLayers = []
+  showBoundaries = true
 }: MapComponentProps) {
   const [viewState, setViewState] = useState({
     longitude: 57.75,
@@ -47,7 +43,6 @@ export default function MapComponent({
     zoom: 12
   })
   
-  const [selectedWell, setSelectedWell] = useState<Well | null>(null)
   const [popupInfo, setPopupInfo] = useState<Well | null>(null)
   const mapRef = useRef<any>(null)
 
