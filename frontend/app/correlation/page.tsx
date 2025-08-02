@@ -2,14 +2,12 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { 
-  TrendingUp, 
   Layers, 
   Eye,
   EyeOff,
   Maximize2,
   Download,
-  Settings,
-  BarChart3
+  Settings
 } from "lucide-react"
 
 export default function CorrelationPage() {

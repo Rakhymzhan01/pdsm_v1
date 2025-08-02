@@ -3,7 +3,7 @@
 const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5001'
 const API_BASE_PATH = process.env.NEXT_PUBLIC_API_BASE_PATH || '/api'
 
-interface ApiResponse<T = any> {
+interface ApiResponse<T = unknown> {
   data?: T
   error?: string
   message?: string
@@ -55,7 +55,7 @@ class ApiClient {
   }
 
   // Authentication
-  async login(username: string, password: string): Promise<ApiResponse<any>> {
+  async login(username: string, password: string): Promise<ApiResponse<unknown>> {
     return this.request('/login_from_nextjs', {
       method: 'POST',
       body: JSON.stringify({ username, password }),
@@ -63,57 +63,57 @@ class ApiClient {
   }
 
   // Wells data
-  async getWells(): Promise<ApiResponse<any[]>> {
+  async getWells(): Promise<ApiResponse<unknown[]>> {
     return this.request('/karatobe/wells')
   }
 
   // Production data
-  async getProductionData(): Promise<ApiResponse<any[]>> {
+  async getProductionData(): Promise<ApiResponse<unknown[]>> {
     return this.request('/karatobe/production')
   }
 
   // Faults data
-  async getFaults(): Promise<ApiResponse<any[]>> {
+  async getFaults(): Promise<ApiResponse<unknown[]>> {
     return this.request('/karatobe/faults')
   }
 
   // Boundaries data  
-  async getBoundaries(): Promise<ApiResponse<any[]>> {
+  async getBoundaries(): Promise<ApiResponse<unknown[]>> {
     return this.request('/karatobe/boundaries')
   }
 
   // Gantt data
-  async getGanttData(): Promise<ApiResponse<any[]>> {
+  async getGanttData(): Promise<ApiResponse<unknown[]>> {
     return this.request('/karatobe/gantt')
   }
 
   // PVT data
-  async getPvtData(): Promise<ApiResponse<any[]>> {
+  async getPvtData(): Promise<ApiResponse<unknown[]>> {
     return this.request('/karatobe/pvt')
   }
 
   // Tops data
-  async getTopsData(): Promise<ApiResponse<any[]>> {
+  async getTopsData(): Promise<ApiResponse<unknown[]>> {
     return this.request('/karatobe/tops')
   }
 
   // Relative Permeability Table
-  async getRelativePermeabilityTable(): Promise<ApiResponse<any[]>> {
+  async getRelativePermeabilityTable(): Promise<ApiResponse<unknown[]>> {
     return this.request('/karatobe/relative_permeability_table')
   }
 
   // Relative Permeability Summary
-  async getRelativePermeabilitySummary(): Promise<ApiResponse<any[]>> {
+  async getRelativePermeabilitySummary(): Promise<ApiResponse<unknown[]>> {
     return this.request('/karatobe/relative_permeability_summary')
   }
 
   // XPT data for specific well
-  async getXptData(wellName: string): Promise<ApiResponse<any[]>> {
+  async getXptData(wellName: string): Promise<ApiResponse<unknown[]>> {
     return this.request(`/karatobe/xpt_data/${wellName}`)
   }
 
   // Well log data
-  async getWellLogData(wellName: string): Promise<ApiResponse<any[]>> {
+  async getWellLogData(wellName: string): Promise<ApiResponse<unknown[]>> {
     return this.request(`/karatobe/logs/${wellName}`)
   }
 }

@@ -125,7 +125,7 @@ export default function LoginPage() {
             © 2025 Аман Жумекешов
             <br />
             <span className="text-xs opacity-75">
-              Для тестирования: username="test", password="test"
+              Для тестирования: username=&quot;test&quot;, password=&quot;test&quot;
             </span>
           </div>
         </CardContent>

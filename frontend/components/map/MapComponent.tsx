@@ -2,6 +2,7 @@
 
 import React, { useState, useRef } from 'react'
 import Map, { Marker, Popup, Layer, Source } from 'react-map-gl/mapbox'
+import type { MapRef } from 'react-map-gl/mapbox'
 import * as d3 from 'd3'
 import 'mapbox-gl/dist/mapbox-gl.css'
 
@@ -44,7 +45,7 @@ export default function MapComponent({
   })
   
   const [popupInfo, setPopupInfo] = useState<Well | null>(null)
-  const mapRef = useRef<any>(null)
+  const mapRef = useRef<MapRef | null>(null)
 
   const getWellColor = (status: string) => {
     switch (status) {
@@ -64,9 +65,10 @@ export default function MapComponent({
 
   // Boundary data for Karatobe field
   const boundaryData = {
-    type: 'Feature',
+    type: 'Feature' as const,
+    properties: {},
     geometry: {
-      type: 'Polygon',
+      type: 'Polygon' as const,
       coordinates: [[
         [57.65, 50.08],
         [57.85, 50.08],
@@ -79,12 +81,13 @@ export default function MapComponent({
 
   // Fault lines data
   const faultData = {
-    type: 'FeatureCollection',
+    type: 'FeatureCollection' as const,
     features: [
       {
-        type: 'Feature',
+        type: 'Feature' as const,
+        properties: {},
         geometry: {
-          type: 'LineString',
+          type: 'LineString' as const,
           coordinates: [
             [57.68, 50.09],
             [57.72, 50.15],
@@ -93,9 +96,10 @@ export default function MapComponent({
         }
       },
       {
-        type: 'Feature',
+        type: 'Feature' as const,
+        properties: {},
         geometry: {
-          type: 'LineString',
+          type: 'LineString' as const,
           coordinates: [
             [57.71, 50.10],
             [57.75, 50.14],
