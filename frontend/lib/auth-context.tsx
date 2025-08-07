@@ -8,10 +8,17 @@ interface User {
   loginTime: string
 }
 
+interface LoginResponse {
+  access_token: string
+  token_type: string
+  user: { username: string; role: string }
+  message: string
+}
+
 interface AuthContextType {
   user: User | null
   isAuthenticated: boolean
-  login: (userData: User) => void
+  login: (userData: User, token: string) => void
   logout: () => void
   isLoading: boolean
 }
@@ -41,9 +48,9 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     setIsLoading(false)
   }, [])
 
-  const login = (userData: User) => {
+  const login = (userData: User, token: string) => {
     setUser(userData)
-    localStorage.setItem('authToken', 'authenticated-' + Date.now())
+    localStorage.setItem('authToken', token)
     localStorage.setItem('userData', JSON.stringify(userData))
   }
 

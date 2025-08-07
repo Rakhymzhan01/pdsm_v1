@@ -9,12 +9,14 @@ import { Label } from "@/components/ui/label"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { MapPin, User, Lock, AlertCircle } from "lucide-react"
 import { apiClient } from "@/lib/api-client"
+import { useAuth } from "@/lib/auth-context"
 
 export default function LoginPage() {
   const [username, setUsername] = useState("")
   const [password, setPassword] = useState("")
   const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState("")
+  const { login } = useAuth()
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -27,7 +29,7 @@ export default function LoginPage() {
         return
       }
 
-      // Call Flask API for authentication
+      // Call FastAPI for authentication
       const response = await apiClient.login(username, password)
       
       if (response.error) {
@@ -35,14 +37,15 @@ export default function LoginPage() {
         return
       }
 
-      if (response.data) {
-        // Store authentication data
-        localStorage.setItem('authToken', 'authenticated-' + Date.now())
-        localStorage.setItem('userData', JSON.stringify({
-          username: username,
-          role: 'administrator',
+      if (response.data && response.data.access_token) {
+        // Use the auth context to store user data and JWT token
+        const userData = {
+          username: response.data.user.username,
+          role: response.data.user.role,
           loginTime: new Date().toISOString()
-        }))
+        }
+        
+        login(userData, response.data.access_token)
         
         // Redirect to main dashboard
         window.location.href = '/'

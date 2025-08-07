@@ -1,13 +1,19 @@
-// API Client for Flask Backend Integration
+// API Client for FastAPI Backend Integration
+import type { 
+  ApiResponse, 
+  LoginResponse, 
+  Well, 
+  Production, 
+  PVT, 
+  Tops,
+  FaultData,
+  BoundaryData,
+  GanttData
+} from '@/types/api'
+import { logger } from './logger'
 
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5001'
-const API_BASE_PATH = process.env.NEXT_PUBLIC_API_BASE_PATH || '/api'
-
-interface ApiResponse<T = unknown> {
-  data?: T
-  error?: string
-  message?: string
-}
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000'
+const API_BASE_PATH = process.env.NEXT_PUBLIC_API_BASE_PATH || '/api/v1'
 
 class ApiClient {
   private baseUrl: string
@@ -20,9 +26,11 @@ class ApiClient {
     endpoint: string, 
     options: RequestInit = {}
   ): Promise<ApiResponse<T>> {
+    const url = `${this.baseUrl}${endpoint}`
+    const method = options.method || 'GET'
+    
     try {
-      const url = `${this.baseUrl}${endpoint}`
-      console.log(`Making API request to: ${url}`)
+      logger.apiRequest(endpoint, method)
       
       // Get auth token from localStorage
       const token = localStorage.getItem('authToken')
@@ -38,62 +46,63 @@ class ApiClient {
         ...options,
       })
 
-      console.log(`API response status: ${response.status}`)
-
       if (!response.ok) {
         const errorText = await response.text()
-        throw new Error(`HTTP ${response.status}: ${errorText}`)
+        const errorMessage = `HTTP ${response.status}: ${errorText}`
+        logger.apiError(endpoint, errorMessage)
+        throw new Error(errorMessage)
       }
 
       const data = await response.json()
-      console.log(`API response data:`, data)
+      logger.apiResponse(endpoint, response.status, data)
       return { data }
     } catch (error) {
-      console.error(`API request failed for ${endpoint}:`, error)
-      return { error: error instanceof Error ? error.message : 'Network connection failed' }
+      const errorMessage = error instanceof Error ? error.message : 'Network connection failed'
+      logger.apiError(endpoint, error)
+      return { error: errorMessage }
     }
   }
 
   // Authentication
-  async login(username: string, password: string): Promise<ApiResponse<unknown>> {
-    return this.request('/login_from_nextjs', {
+  async login(username: string, password: string): Promise<ApiResponse<LoginResponse>> {
+    return this.request('/auth/login_nextjs', {
       method: 'POST',
       body: JSON.stringify({ username, password }),
     })
   }
 
   // Wells data
-  async getWells(): Promise<ApiResponse<unknown[]>> {
+  async getWells(): Promise<ApiResponse<Well[]>> {
     return this.request('/karatobe/wells')
   }
 
   // Production data
-  async getProductionData(): Promise<ApiResponse<unknown[]>> {
+  async getProductionData(): Promise<ApiResponse<Production[]>> {
     return this.request('/karatobe/production')
   }
 
   // Faults data
-  async getFaults(): Promise<ApiResponse<unknown[]>> {
+  async getFaults(): Promise<ApiResponse<FaultData[]>> {
     return this.request('/karatobe/faults')
   }
 
   // Boundaries data  
-  async getBoundaries(): Promise<ApiResponse<unknown[]>> {
+  async getBoundaries(): Promise<ApiResponse<BoundaryData[]>> {
     return this.request('/karatobe/boundaries')
   }
 
   // Gantt data
-  async getGanttData(): Promise<ApiResponse<unknown[]>> {
+  async getGanttData(): Promise<ApiResponse<GanttData[]>> {
     return this.request('/karatobe/gantt')
   }
 
   // PVT data
-  async getPvtData(): Promise<ApiResponse<unknown[]>> {
+  async getPvtData(): Promise<ApiResponse<PVT[]>> {
     return this.request('/karatobe/pvt')
   }
 
   // Tops data
-  async getTopsData(): Promise<ApiResponse<unknown[]>> {
+  async getTopsData(): Promise<ApiResponse<Tops[]>> {
     return this.request('/karatobe/tops')
   }
 
