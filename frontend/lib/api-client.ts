@@ -71,6 +71,39 @@ class ApiClient {
     })
   }
 
+  // Registration
+  async register(userData: {
+    username: string
+    email: string
+    password: string
+    first_name: string
+    last_name: string
+    project_id: number
+  }): Promise<ApiResponse<{ message: string; username: string; status: string }>> {
+    return this.request('/auth/register', {
+      method: 'POST',
+      body: JSON.stringify(userData),
+    })
+  }
+
+  // Get available projects for registration
+  async getProjects(): Promise<ApiResponse<Array<{ id: number; name: string; description: string }>>> {
+    return this.request('/auth/projects')
+  }
+
+  // Get pending users (master only)
+  async getPendingUsers(): Promise<ApiResponse<unknown[]>> {
+    return this.request('/auth/pending-users')
+  }
+
+  // Approve/reject user (master only)
+  async approveUser(userId: number, action: 'approve' | 'reject'): Promise<ApiResponse<{ message: string }>> {
+    return this.request('/auth/approve-user', {
+      method: 'POST',
+      body: JSON.stringify({ user_id: userId, action }),
+    })
+  }
+
   // Wells data
   async getWells(): Promise<ApiResponse<Well[]>> {
     return this.request('/karatobe/wells')

@@ -2,13 +2,29 @@
 
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { BarChart3, TrendingUp, MapPin, Activity, Database, AlertCircle } from "lucide-react"
+import { Button } from "@/components/ui/button"
+import { BarChart3, TrendingUp, MapPin, Activity, Database, AlertCircle, Users, Crown } from "lucide-react"
 import { useWells, useProductionData } from "@/hooks/use-api"
-import { withAuth } from "@/lib/auth-context"
+import { useState, useEffect } from "react"
+import { apiClient } from "@/lib/api-client"
+import { withAuth, useAuth } from "@/lib/auth-context"
+import Link from "next/link"
 
 function HomePage() {
+  const { user } = useAuth()
   const { data: wellsData, loading: wellsLoading, error: wellsError } = useWells()
   const { data: productionData, loading: productionLoading, error: productionError } = useProductionData()
+  const [pendingUsersCount, setPendingUsersCount] = useState(0)
+
+  useEffect(() => {
+    if (user?.role === 'master') {
+      apiClient.getPendingUsers().then(response => {
+        if (response.data) {
+          setPendingUsersCount(Array.isArray(response.data) ? response.data.length : 0)
+        }
+      })
+    }
+  }, [user])
 
   // Calculate statistics from real data
   const activeWells = wellsData?.length || 0
@@ -24,6 +40,19 @@ function HomePage() {
       <div className="flex items-center justify-between space-y-2">
         <h2 className="text-3xl font-bold tracking-tight">Добро пожаловать!</h2>
         <div className="flex items-center space-x-2">
+          {user?.role === 'master' && (
+            <Link href="/admin/users">
+              <Button className="flex items-center gap-2 bg-orange-600 hover:bg-orange-700 relative">
+                <Crown className="h-4 w-4" />
+                Управление пользователями
+                {pendingUsersCount > 0 && (
+                  <Badge className="ml-2 bg-red-600 hover:bg-red-700 text-white px-2 py-1 text-xs">
+                    {pendingUsersCount}
+                  </Badge>
+                )}
+              </Button>
+            </Link>
+          )}
           <Badge variant="outline">Активы</Badge>
           <Badge variant="outline">Аккаунт</Badge>
         </div>

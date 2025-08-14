@@ -7,8 +7,7 @@ from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
 from sqlalchemy.ext.asyncio import AsyncSession
 from app.core.config import settings
 from app.core.database import get_db
-from app.crud.user import get_user_by_username
-from app.schemas.user import UserInToken
+from app.crud.app_user import get_user_by_username
 
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 security = HTTPBearer()
@@ -32,7 +31,7 @@ def create_access_token(data: dict, expires_delta: Optional[timedelta] = None):
 async def get_current_user(
     credentials: HTTPAuthorizationCredentials = Depends(security),
     db: AsyncSession = Depends(get_db)
-) -> UserInToken:
+) -> dict:
     credentials_exception = HTTPException(
         status_code=status.HTTP_401_UNAUTHORIZED,
         detail="Could not validate credentials",
@@ -50,4 +49,4 @@ async def get_current_user(
     if user is None:
         raise credentials_exception
     
-    return UserInToken(username=user.username, role=user.user_level)
+    return {"username": user.username, "role": user.role}

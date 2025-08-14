@@ -10,6 +10,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { MapPin, User, Lock, AlertCircle } from "lucide-react"
 import { apiClient } from "@/lib/api-client"
 import { useAuth } from "@/lib/auth-context"
+import Link from "next/link"
 
 export default function LoginPage() {
   const [username, setUsername] = useState("")
@@ -125,11 +126,14 @@ export default function LoginPage() {
           </form>
 
           <div className="mt-6 text-center text-sm text-muted-foreground">
-            © 2025 Аман Жумекешов
-            <br />
-            <span className="text-xs opacity-75">
-              Для тестирования: username=&quot;test&quot;, password=&quot;test&quot;
-            </span>
+            Нет аккаунта?{" "}
+            <Link href="/register" className="text-orange-600 hover:underline">
+              Зарегистрироваться
+            </Link>
+          </div>
+
+          <div className="mt-4 text-center text-xs text-muted-foreground">
+            Тестовые аккаунты: Aman/admin123, guest/guest123
           </div>
         </CardContent>
       </Card>

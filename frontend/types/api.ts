@@ -16,9 +16,28 @@ export interface LoginResponse {
   token_type: string
   user: {
     username: string
+    email: string
     role: string
+    first_name: string
+    last_name: string
+    project: string | null
   }
   message: string
+}
+
+export interface Project {
+  id: number
+  name: string
+  description: string
+}
+
+export interface RegisterData {
+  username: string
+  email: string
+  password: string
+  first_name: string
+  last_name: string
+  project_id: number
 }
 
 export interface User {
