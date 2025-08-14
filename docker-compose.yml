@@ -1,19 +1,54 @@
-#version: '3.8'
+version: '3.8'
 
 services:
-  postgres:
-    image: postgres:15
-    container_name: karatobe_postgres
-    environment:
-      POSTGRES_DB: karatobe
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: akzhol2030
+  backend:
+    build: 
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: pdms-backend-dev
     ports:
-      - "5432:5432"
+      - "8000:8000"
+    environment:
+      - POSTGRES_SERVER=86.107.198.48
+      - POSTGRES_PORT=5432
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=akzhol2030
+      - POSTGRES_DB=karatobe
+      - SECRET_KEY=sfgwerthggrnbsdfvstghernsdfvaergfv34g2rbvsdfv
+      - ENVIRONMENT=development
+      - DEBUG=true
     volumes:
-      - postgres_data:/var/lib/postgresql/data
-      - ./init:/docker-entrypoint-initdb.d
+      - ./backend:/app
+      - backend_uploads:/app/uploads
+      - backend_logs:/app/logs
     restart: unless-stopped
+    networks:
+      - pdms-network
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: pdms-frontend-dev
+    ports:
+      - "3000:3000"
+    environment:
+      - NEXT_PUBLIC_API_URL=http://localhost:8000
+      - NEXT_PUBLIC_API_BASE_PATH=/api/v1
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+      - /app/.next
+    depends_on:
+      - backend
+    restart: unless-stopped
+    networks:
+      - pdms-network
 
 volumes:
-  postgres_data:
+  backend_uploads:
+  backend_logs:
+
+networks:
+  pdms-network:
+    driver: bridge

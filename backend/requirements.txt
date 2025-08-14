@@ -12,3 +12,8 @@ pandas==2.2.3
 numpy==1.26.4
 lasio==0.31
 python-dotenv==1.0.1
+pytest==7.4.4
+pytest-asyncio==0.23.2
+httpx==0.26.0
+bcrypt==4.3.0
+greenlet==3.2.4
