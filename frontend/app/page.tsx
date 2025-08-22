@@ -3,7 +3,7 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
-import { BarChart3, TrendingUp, MapPin, Activity, Database, AlertCircle, Users, Crown } from "lucide-react"
+import { BarChart3, TrendingUp, MapPin, Activity, Database, AlertCircle, Crown } from "lucide-react"
 import { useWells, useProductionData } from "@/hooks/use-api"
 import { useState, useEffect } from "react"
 import { apiClient } from "@/lib/api-client"

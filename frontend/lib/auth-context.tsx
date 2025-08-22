@@ -8,12 +8,6 @@ interface User {
   loginTime: string
 }
 
-interface LoginResponse {
-  access_token: string
-  token_type: string
-  user: { username: string; role: string }
-  message: string
-}
 
 interface AuthContextType {
   user: User | null

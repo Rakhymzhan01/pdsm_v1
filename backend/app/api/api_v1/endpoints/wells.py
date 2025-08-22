@@ -12,8 +12,7 @@ router = APIRouter()
 
 @router.get("/wells", response_model=List[Well])
 async def read_wells(
-    db: AsyncSession = Depends(get_db),
-    current_user: UserInToken = Depends(get_current_user)
+    db: AsyncSession = Depends(get_db)
 ):
     """Get all wells data"""
     try:

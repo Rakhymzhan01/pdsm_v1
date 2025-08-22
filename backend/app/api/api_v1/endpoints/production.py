@@ -12,8 +12,7 @@ router = APIRouter()
 @router.get("/production", response_model=List[Dict[str, Any]])
 async def read_production_data(
     limit: int = 10,
-    db: AsyncSession = Depends(get_db),
-    current_user: UserInToken = Depends(get_current_user)
+    db: AsyncSession = Depends(get_db)
 ):
     """Get production data from the last 7 days"""
     try:

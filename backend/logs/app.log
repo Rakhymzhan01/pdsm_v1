@@ -1429,3 +1429,1675 @@ Traceback (most recent call last):
     ...<4 lines>...
     )
 ValueError: the greenlet library is required to use this function. No module named 'greenlet'
+2025-08-22 17:05:15,878 - pdms_api - ERROR - Unhandled Exception: the greenlet library is required to use this function. No module named 'greenlet' | Path: /api/v1/karatobe/wells
+Traceback (most recent call last):
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/backend/app/core/security.py", line 41, in get_current_user
+    payload = jwt.decode(credentials.credentials, settings.SECRET_KEY, algorithms=[settings.ALGORITHM])
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/jose/jwt.py", line 157, in decode
+    _validate_claims(
+    ~~~~~~~~~~~~~~~~^
+        claims,
+        ^^^^^^^
+    ...<5 lines>...
+        options=defaults,
+        ^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/jose/jwt.py", line 481, in _validate_claims
+    _validate_exp(claims, leeway=leeway)
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/jose/jwt.py", line 314, in _validate_exp
+    raise ExpiredSignatureError("Signature has expired.")
+jose.exceptions.ExpiredSignatureError: Signature has expired.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/backend/app/core/database.py", line 17, in get_db
+    yield session
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/fastapi/routing.py", line 291, in app
+    solved_result = await solve_dependencies(
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/fastapi/dependencies/utils.py", line 638, in solve_dependencies
+    solved = await call(**solved_result.values)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/backend/app/core/security.py", line 46, in get_current_user
+    raise credentials_exception
+fastapi.exceptions.HTTPException: 401: Could not validate credentials
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/starlette/middleware/errors.py", line 165, in __call__
+    await self.app(scope, receive, _send)
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/starlette/middleware/cors.py", line 93, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/starlette/middleware/cors.py", line 144, in simple_response
+    await self.app(scope, receive, send)
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/starlette/middleware/exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/starlette/routing.py", line 715, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/starlette/routing.py", line 735, in app
+    await route.handle(scope, receive, send)
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/starlette/routing.py", line 288, in handle
+    await self.app(scope, receive, send)
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/starlette/routing.py", line 76, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/starlette/routing.py", line 73, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/fastapi/routing.py", line 290, in app
+    async with AsyncExitStack() as async_exit_stack:
+               ~~~~~~~~~~~~~~^^
+  File "/opt/homebrew/Cellar/python@3.13/3.13.3/Frameworks/Python.framework/Versions/3.13/lib/python3.13/contextlib.py", line 768, in __aexit__
+    raise exc
+  File "/opt/homebrew/Cellar/python@3.13/3.13.3/Frameworks/Python.framework/Versions/3.13/lib/python3.13/contextlib.py", line 751, in __aexit__
+    cb_suppress = await cb(*exc_details)
+                  ^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.13/3.13.3/Frameworks/Python.framework/Versions/3.13/lib/python3.13/contextlib.py", line 235, in __aexit__
+    await self.gen.athrow(value)
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/backend/app/core/database.py", line 15, in get_db
+    async with async_session_local() as session:
+               ~~~~~~~~~~~~~~~~~~~^^
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/sqlalchemy/ext/asyncio/session.py", line 1080, in __aexit__
+    await asyncio.shield(task)
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/sqlalchemy/ext/asyncio/session.py", line 1025, in close
+    await greenlet_spawn(self.sync_session.close)
+          ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/sqlalchemy/util/concurrency.py", line 99, in greenlet_spawn
+    _not_implemented()
+    ~~~~~~~~~~~~~~~~^^
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/sqlalchemy/util/concurrency.py", line 79, in _not_implemented
+    raise ValueError(
+    ...<4 lines>...
+    )
+ValueError: the greenlet library is required to use this function. No module named 'greenlet'
+2025-08-22 17:05:15,906 - pdms_api - ERROR - Unhandled Exception: the greenlet library is required to use this function. No module named 'greenlet' | Path: /api/v1/karatobe/production
+Traceback (most recent call last):
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/backend/app/core/security.py", line 41, in get_current_user
+    payload = jwt.decode(credentials.credentials, settings.SECRET_KEY, algorithms=[settings.ALGORITHM])
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/jose/jwt.py", line 157, in decode
+    _validate_claims(
+    ~~~~~~~~~~~~~~~~^
+        claims,
+        ^^^^^^^
+    ...<5 lines>...
+        options=defaults,
+        ^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/jose/jwt.py", line 481, in _validate_claims
+    _validate_exp(claims, leeway=leeway)
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/jose/jwt.py", line 314, in _validate_exp
+    raise ExpiredSignatureError("Signature has expired.")
+jose.exceptions.ExpiredSignatureError: Signature has expired.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/backend/app/core/database.py", line 17, in get_db
+    yield session
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/fastapi/routing.py", line 291, in app
+    solved_result = await solve_dependencies(
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/fastapi/dependencies/utils.py", line 638, in solve_dependencies
+    solved = await call(**solved_result.values)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/backend/app/core/security.py", line 46, in get_current_user
+    raise credentials_exception
+fastapi.exceptions.HTTPException: 401: Could not validate credentials
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/starlette/middleware/errors.py", line 165, in __call__
+    await self.app(scope, receive, _send)
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/starlette/middleware/cors.py", line 93, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/starlette/middleware/cors.py", line 144, in simple_response
+    await self.app(scope, receive, send)
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/starlette/middleware/exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/starlette/routing.py", line 715, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/starlette/routing.py", line 735, in app
+    await route.handle(scope, receive, send)
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/starlette/routing.py", line 288, in handle
+    await self.app(scope, receive, send)
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/starlette/routing.py", line 76, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/starlette/routing.py", line 73, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/fastapi/routing.py", line 290, in app
+    async with AsyncExitStack() as async_exit_stack:
+               ~~~~~~~~~~~~~~^^
+  File "/opt/homebrew/Cellar/python@3.13/3.13.3/Frameworks/Python.framework/Versions/3.13/lib/python3.13/contextlib.py", line 768, in __aexit__
+    raise exc
+  File "/opt/homebrew/Cellar/python@3.13/3.13.3/Frameworks/Python.framework/Versions/3.13/lib/python3.13/contextlib.py", line 751, in __aexit__
+    cb_suppress = await cb(*exc_details)
+                  ^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.13/3.13.3/Frameworks/Python.framework/Versions/3.13/lib/python3.13/contextlib.py", line 235, in __aexit__
+    await self.gen.athrow(value)
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/backend/app/core/database.py", line 15, in get_db
+    async with async_session_local() as session:
+               ~~~~~~~~~~~~~~~~~~~^^
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/sqlalchemy/ext/asyncio/session.py", line 1080, in __aexit__
+    await asyncio.shield(task)
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/sqlalchemy/ext/asyncio/session.py", line 1025, in close
+    await greenlet_spawn(self.sync_session.close)
+          ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/sqlalchemy/util/concurrency.py", line 99, in greenlet_spawn
+    _not_implemented()
+    ~~~~~~~~~~~~~~~~^^
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/sqlalchemy/util/concurrency.py", line 79, in _not_implemented
+    raise ValueError(
+    ...<4 lines>...
+    )
+ValueError: the greenlet library is required to use this function. No module named 'greenlet'
+2025-08-22 17:05:15,929 - pdms_api - ERROR - Unhandled Exception: the greenlet library is required to use this function. No module named 'greenlet' | Path: /api/v1/karatobe/wells
+Traceback (most recent call last):
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/backend/app/core/security.py", line 41, in get_current_user
+    payload = jwt.decode(credentials.credentials, settings.SECRET_KEY, algorithms=[settings.ALGORITHM])
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/jose/jwt.py", line 157, in decode
+    _validate_claims(
+    ~~~~~~~~~~~~~~~~^
+        claims,
+        ^^^^^^^
+    ...<5 lines>...
+        options=defaults,
+        ^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/jose/jwt.py", line 481, in _validate_claims
+    _validate_exp(claims, leeway=leeway)
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/jose/jwt.py", line 314, in _validate_exp
+    raise ExpiredSignatureError("Signature has expired.")
+jose.exceptions.ExpiredSignatureError: Signature has expired.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/backend/app/core/database.py", line 17, in get_db
+    yield session
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/fastapi/routing.py", line 291, in app
+    solved_result = await solve_dependencies(
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/fastapi/dependencies/utils.py", line 638, in solve_dependencies
+    solved = await call(**solved_result.values)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/backend/app/core/security.py", line 46, in get_current_user
+    raise credentials_exception
+fastapi.exceptions.HTTPException: 401: Could not validate credentials
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/starlette/middleware/errors.py", line 165, in __call__
+    await self.app(scope, receive, _send)
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/starlette/middleware/cors.py", line 93, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/starlette/middleware/cors.py", line 144, in simple_response
+    await self.app(scope, receive, send)
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/starlette/middleware/exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/starlette/routing.py", line 715, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/starlette/routing.py", line 735, in app
+    await route.handle(scope, receive, send)
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/starlette/routing.py", line 288, in handle
+    await self.app(scope, receive, send)
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/starlette/routing.py", line 76, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/starlette/routing.py", line 73, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/fastapi/routing.py", line 290, in app
+    async with AsyncExitStack() as async_exit_stack:
+               ~~~~~~~~~~~~~~^^
+  File "/opt/homebrew/Cellar/python@3.13/3.13.3/Frameworks/Python.framework/Versions/3.13/lib/python3.13/contextlib.py", line 768, in __aexit__
+    raise exc
+  File "/opt/homebrew/Cellar/python@3.13/3.13.3/Frameworks/Python.framework/Versions/3.13/lib/python3.13/contextlib.py", line 751, in __aexit__
+    cb_suppress = await cb(*exc_details)
+                  ^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.13/3.13.3/Frameworks/Python.framework/Versions/3.13/lib/python3.13/contextlib.py", line 235, in __aexit__
+    await self.gen.athrow(value)
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/backend/app/core/database.py", line 15, in get_db
+    async with async_session_local() as session:
+               ~~~~~~~~~~~~~~~~~~~^^
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/sqlalchemy/ext/asyncio/session.py", line 1080, in __aexit__
+    await asyncio.shield(task)
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/sqlalchemy/ext/asyncio/session.py", line 1025, in close
+    await greenlet_spawn(self.sync_session.close)
+          ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/sqlalchemy/util/concurrency.py", line 99, in greenlet_spawn
+    _not_implemented()
+    ~~~~~~~~~~~~~~~~^^
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/sqlalchemy/util/concurrency.py", line 79, in _not_implemented
+    raise ValueError(
+    ...<4 lines>...
+    )
+ValueError: the greenlet library is required to use this function. No module named 'greenlet'
+2025-08-22 17:05:15,939 - pdms_api - ERROR - Unhandled Exception: the greenlet library is required to use this function. No module named 'greenlet' | Path: /api/v1/karatobe/production
+Traceback (most recent call last):
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/backend/app/core/security.py", line 41, in get_current_user
+    payload = jwt.decode(credentials.credentials, settings.SECRET_KEY, algorithms=[settings.ALGORITHM])
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/jose/jwt.py", line 157, in decode
+    _validate_claims(
+    ~~~~~~~~~~~~~~~~^
+        claims,
+        ^^^^^^^
+    ...<5 lines>...
+        options=defaults,
+        ^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/jose/jwt.py", line 481, in _validate_claims
+    _validate_exp(claims, leeway=leeway)
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/jose/jwt.py", line 314, in _validate_exp
+    raise ExpiredSignatureError("Signature has expired.")
+jose.exceptions.ExpiredSignatureError: Signature has expired.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/backend/app/core/database.py", line 17, in get_db
+    yield session
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/fastapi/routing.py", line 291, in app
+    solved_result = await solve_dependencies(
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/fastapi/dependencies/utils.py", line 638, in solve_dependencies
+    solved = await call(**solved_result.values)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/backend/app/core/security.py", line 46, in get_current_user
+    raise credentials_exception
+fastapi.exceptions.HTTPException: 401: Could not validate credentials
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/starlette/middleware/errors.py", line 165, in __call__
+    await self.app(scope, receive, _send)
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/starlette/middleware/cors.py", line 93, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/starlette/middleware/cors.py", line 144, in simple_response
+    await self.app(scope, receive, send)
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/starlette/middleware/exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/starlette/routing.py", line 715, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/starlette/routing.py", line 735, in app
+    await route.handle(scope, receive, send)
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/starlette/routing.py", line 288, in handle
+    await self.app(scope, receive, send)
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/starlette/routing.py", line 76, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/starlette/routing.py", line 73, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/fastapi/routing.py", line 290, in app
+    async with AsyncExitStack() as async_exit_stack:
+               ~~~~~~~~~~~~~~^^
+  File "/opt/homebrew/Cellar/python@3.13/3.13.3/Frameworks/Python.framework/Versions/3.13/lib/python3.13/contextlib.py", line 768, in __aexit__
+    raise exc
+  File "/opt/homebrew/Cellar/python@3.13/3.13.3/Frameworks/Python.framework/Versions/3.13/lib/python3.13/contextlib.py", line 751, in __aexit__
+    cb_suppress = await cb(*exc_details)
+                  ^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.13/3.13.3/Frameworks/Python.framework/Versions/3.13/lib/python3.13/contextlib.py", line 235, in __aexit__
+    await self.gen.athrow(value)
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/backend/app/core/database.py", line 15, in get_db
+    async with async_session_local() as session:
+               ~~~~~~~~~~~~~~~~~~~^^
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/sqlalchemy/ext/asyncio/session.py", line 1080, in __aexit__
+    await asyncio.shield(task)
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/sqlalchemy/ext/asyncio/session.py", line 1025, in close
+    await greenlet_spawn(self.sync_session.close)
+          ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/sqlalchemy/util/concurrency.py", line 99, in greenlet_spawn
+    _not_implemented()
+    ~~~~~~~~~~~~~~~~^^
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/sqlalchemy/util/concurrency.py", line 79, in _not_implemented
+    raise ValueError(
+    ...<4 lines>...
+    )
+ValueError: the greenlet library is required to use this function. No module named 'greenlet'
+2025-08-22 17:05:15,961 - pdms_api - ERROR - Unhandled Exception: the greenlet library is required to use this function. No module named 'greenlet' | Path: /api/v1/karatobe/wells
+Traceback (most recent call last):
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/backend/app/core/security.py", line 41, in get_current_user
+    payload = jwt.decode(credentials.credentials, settings.SECRET_KEY, algorithms=[settings.ALGORITHM])
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/jose/jwt.py", line 157, in decode
+    _validate_claims(
+    ~~~~~~~~~~~~~~~~^
+        claims,
+        ^^^^^^^
+    ...<5 lines>...
+        options=defaults,
+        ^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/jose/jwt.py", line 481, in _validate_claims
+    _validate_exp(claims, leeway=leeway)
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/jose/jwt.py", line 314, in _validate_exp
+    raise ExpiredSignatureError("Signature has expired.")
+jose.exceptions.ExpiredSignatureError: Signature has expired.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/backend/app/core/database.py", line 17, in get_db
+    yield session
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/fastapi/routing.py", line 291, in app
+    solved_result = await solve_dependencies(
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/fastapi/dependencies/utils.py", line 638, in solve_dependencies
+    solved = await call(**solved_result.values)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/backend/app/core/security.py", line 46, in get_current_user
+    raise credentials_exception
+fastapi.exceptions.HTTPException: 401: Could not validate credentials
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/starlette/middleware/errors.py", line 165, in __call__
+    await self.app(scope, receive, _send)
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/starlette/middleware/cors.py", line 93, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/starlette/middleware/cors.py", line 144, in simple_response
+    await self.app(scope, receive, send)
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/starlette/middleware/exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/starlette/routing.py", line 715, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/starlette/routing.py", line 735, in app
+    await route.handle(scope, receive, send)
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/starlette/routing.py", line 288, in handle
+    await self.app(scope, receive, send)
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/starlette/routing.py", line 76, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/starlette/routing.py", line 73, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/fastapi/routing.py", line 290, in app
+    async with AsyncExitStack() as async_exit_stack:
+               ~~~~~~~~~~~~~~^^
+  File "/opt/homebrew/Cellar/python@3.13/3.13.3/Frameworks/Python.framework/Versions/3.13/lib/python3.13/contextlib.py", line 768, in __aexit__
+    raise exc
+  File "/opt/homebrew/Cellar/python@3.13/3.13.3/Frameworks/Python.framework/Versions/3.13/lib/python3.13/contextlib.py", line 751, in __aexit__
+    cb_suppress = await cb(*exc_details)
+                  ^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.13/3.13.3/Frameworks/Python.framework/Versions/3.13/lib/python3.13/contextlib.py", line 235, in __aexit__
+    await self.gen.athrow(value)
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/backend/app/core/database.py", line 15, in get_db
+    async with async_session_local() as session:
+               ~~~~~~~~~~~~~~~~~~~^^
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/sqlalchemy/ext/asyncio/session.py", line 1080, in __aexit__
+    await asyncio.shield(task)
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/sqlalchemy/ext/asyncio/session.py", line 1025, in close
+    await greenlet_spawn(self.sync_session.close)
+          ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/sqlalchemy/util/concurrency.py", line 99, in greenlet_spawn
+    _not_implemented()
+    ~~~~~~~~~~~~~~~~^^
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/sqlalchemy/util/concurrency.py", line 79, in _not_implemented
+    raise ValueError(
+    ...<4 lines>...
+    )
+ValueError: the greenlet library is required to use this function. No module named 'greenlet'
+2025-08-22 17:05:15,970 - pdms_api - ERROR - Unhandled Exception: the greenlet library is required to use this function. No module named 'greenlet' | Path: /api/v1/karatobe/production
+Traceback (most recent call last):
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/backend/app/core/security.py", line 41, in get_current_user
+    payload = jwt.decode(credentials.credentials, settings.SECRET_KEY, algorithms=[settings.ALGORITHM])
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/jose/jwt.py", line 157, in decode
+    _validate_claims(
+    ~~~~~~~~~~~~~~~~^
+        claims,
+        ^^^^^^^
+    ...<5 lines>...
+        options=defaults,
+        ^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/jose/jwt.py", line 481, in _validate_claims
+    _validate_exp(claims, leeway=leeway)
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/jose/jwt.py", line 314, in _validate_exp
+    raise ExpiredSignatureError("Signature has expired.")
+jose.exceptions.ExpiredSignatureError: Signature has expired.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/backend/app/core/database.py", line 17, in get_db
+    yield session
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/fastapi/routing.py", line 291, in app
+    solved_result = await solve_dependencies(
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/fastapi/dependencies/utils.py", line 638, in solve_dependencies
+    solved = await call(**solved_result.values)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/backend/app/core/security.py", line 46, in get_current_user
+    raise credentials_exception
+fastapi.exceptions.HTTPException: 401: Could not validate credentials
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/starlette/middleware/errors.py", line 165, in __call__
+    await self.app(scope, receive, _send)
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/starlette/middleware/cors.py", line 93, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/starlette/middleware/cors.py", line 144, in simple_response
+    await self.app(scope, receive, send)
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/starlette/middleware/exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/starlette/routing.py", line 715, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/starlette/routing.py", line 735, in app
+    await route.handle(scope, receive, send)
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/starlette/routing.py", line 288, in handle
+    await self.app(scope, receive, send)
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/starlette/routing.py", line 76, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/starlette/routing.py", line 73, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/fastapi/routing.py", line 290, in app
+    async with AsyncExitStack() as async_exit_stack:
+               ~~~~~~~~~~~~~~^^
+  File "/opt/homebrew/Cellar/python@3.13/3.13.3/Frameworks/Python.framework/Versions/3.13/lib/python3.13/contextlib.py", line 768, in __aexit__
+    raise exc
+  File "/opt/homebrew/Cellar/python@3.13/3.13.3/Frameworks/Python.framework/Versions/3.13/lib/python3.13/contextlib.py", line 751, in __aexit__
+    cb_suppress = await cb(*exc_details)
+                  ^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.13/3.13.3/Frameworks/Python.framework/Versions/3.13/lib/python3.13/contextlib.py", line 235, in __aexit__
+    await self.gen.athrow(value)
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/backend/app/core/database.py", line 15, in get_db
+    async with async_session_local() as session:
+               ~~~~~~~~~~~~~~~~~~~^^
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/sqlalchemy/ext/asyncio/session.py", line 1080, in __aexit__
+    await asyncio.shield(task)
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/sqlalchemy/ext/asyncio/session.py", line 1025, in close
+    await greenlet_spawn(self.sync_session.close)
+          ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/sqlalchemy/util/concurrency.py", line 99, in greenlet_spawn
+    _not_implemented()
+    ~~~~~~~~~~~~~~~~^^
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/sqlalchemy/util/concurrency.py", line 79, in _not_implemented
+    raise ValueError(
+    ...<4 lines>...
+    )
+ValueError: the greenlet library is required to use this function. No module named 'greenlet'
+2025-08-22 17:05:46,538 - pdms_api - ERROR - Unhandled Exception: the greenlet library is required to use this function. No module named 'greenlet' | Path: /api/v1/auth/login_nextjs
+Traceback (most recent call last):
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/backend/app/api/api_v1/endpoints/auth.py", line 31, in login_from_nextjs
+    user = await authenticate_user(db, user_login.username, user_login.password)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/backend/app/crud/app_user.py", line 41, in authenticate_user
+    user = await get_user_by_username(db, username)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/backend/app/crud/app_user.py", line 11, in get_user_by_username
+    result = await db.execute(
+             ^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/sqlalchemy/ext/asyncio/session.py", line 461, in execute
+    result = await greenlet_spawn(
+                   ~~~~~~~~~~~~~~^
+        self.sync_session.execute,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<4 lines>...
+        **kw,
+        ^^^^^
+    )
+    ^
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/sqlalchemy/util/concurrency.py", line 99, in greenlet_spawn
+    _not_implemented()
+    ~~~~~~~~~~~~~~~~^^
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/sqlalchemy/util/concurrency.py", line 79, in _not_implemented
+    raise ValueError(
+    ...<4 lines>...
+    )
+ValueError: the greenlet library is required to use this function. No module named 'greenlet'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/backend/app/core/database.py", line 17, in get_db
+    yield session
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/fastapi/routing.py", line 301, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/fastapi/routing.py", line 212, in run_endpoint_function
+    return await dependant.call(**values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/backend/app/api/api_v1/endpoints/auth.py", line 69, in login_from_nextjs
+    raise HTTPException(
+    ...<2 lines>...
+    )
+fastapi.exceptions.HTTPException: 500: Login failed due to server error
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/starlette/middleware/errors.py", line 165, in __call__
+    await self.app(scope, receive, _send)
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/starlette/middleware/cors.py", line 93, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/starlette/middleware/cors.py", line 144, in simple_response
+    await self.app(scope, receive, send)
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/starlette/middleware/exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/starlette/routing.py", line 715, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/starlette/routing.py", line 735, in app
+    await route.handle(scope, receive, send)
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/starlette/routing.py", line 288, in handle
+    await self.app(scope, receive, send)
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/starlette/routing.py", line 76, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/starlette/routing.py", line 73, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/fastapi/routing.py", line 290, in app
+    async with AsyncExitStack() as async_exit_stack:
+               ~~~~~~~~~~~~~~^^
+  File "/opt/homebrew/Cellar/python@3.13/3.13.3/Frameworks/Python.framework/Versions/3.13/lib/python3.13/contextlib.py", line 768, in __aexit__
+    raise exc
+  File "/opt/homebrew/Cellar/python@3.13/3.13.3/Frameworks/Python.framework/Versions/3.13/lib/python3.13/contextlib.py", line 751, in __aexit__
+    cb_suppress = await cb(*exc_details)
+                  ^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.13/3.13.3/Frameworks/Python.framework/Versions/3.13/lib/python3.13/contextlib.py", line 235, in __aexit__
+    await self.gen.athrow(value)
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/backend/app/core/database.py", line 15, in get_db
+    async with async_session_local() as session:
+               ~~~~~~~~~~~~~~~~~~~^^
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/sqlalchemy/ext/asyncio/session.py", line 1080, in __aexit__
+    await asyncio.shield(task)
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/sqlalchemy/ext/asyncio/session.py", line 1025, in close
+    await greenlet_spawn(self.sync_session.close)
+          ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/sqlalchemy/util/concurrency.py", line 99, in greenlet_spawn
+    _not_implemented()
+    ~~~~~~~~~~~~~~~~^^
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/sqlalchemy/util/concurrency.py", line 79, in _not_implemented
+    raise ValueError(
+    ...<4 lines>...
+    )
+ValueError: the greenlet library is required to use this function. No module named 'greenlet'
+2025-08-22 17:05:48,622 - pdms_api - ERROR - Unhandled Exception: the greenlet library is required to use this function. No module named 'greenlet' | Path: /api/v1/auth/login_nextjs
+Traceback (most recent call last):
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/backend/app/api/api_v1/endpoints/auth.py", line 31, in login_from_nextjs
+    user = await authenticate_user(db, user_login.username, user_login.password)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/backend/app/crud/app_user.py", line 41, in authenticate_user
+    user = await get_user_by_username(db, username)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/backend/app/crud/app_user.py", line 11, in get_user_by_username
+    result = await db.execute(
+             ^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/sqlalchemy/ext/asyncio/session.py", line 461, in execute
+    result = await greenlet_spawn(
+                   ~~~~~~~~~~~~~~^
+        self.sync_session.execute,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<4 lines>...
+        **kw,
+        ^^^^^
+    )
+    ^
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/sqlalchemy/util/concurrency.py", line 99, in greenlet_spawn
+    _not_implemented()
+    ~~~~~~~~~~~~~~~~^^
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/sqlalchemy/util/concurrency.py", line 79, in _not_implemented
+    raise ValueError(
+    ...<4 lines>...
+    )
+ValueError: the greenlet library is required to use this function. No module named 'greenlet'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/backend/app/core/database.py", line 17, in get_db
+    yield session
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/fastapi/routing.py", line 301, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/fastapi/routing.py", line 212, in run_endpoint_function
+    return await dependant.call(**values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/backend/app/api/api_v1/endpoints/auth.py", line 69, in login_from_nextjs
+    raise HTTPException(
+    ...<2 lines>...
+    )
+fastapi.exceptions.HTTPException: 500: Login failed due to server error
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/starlette/middleware/errors.py", line 165, in __call__
+    await self.app(scope, receive, _send)
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/starlette/middleware/cors.py", line 93, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/starlette/middleware/cors.py", line 144, in simple_response
+    await self.app(scope, receive, send)
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/starlette/middleware/exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/starlette/routing.py", line 715, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/starlette/routing.py", line 735, in app
+    await route.handle(scope, receive, send)
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/starlette/routing.py", line 288, in handle
+    await self.app(scope, receive, send)
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/starlette/routing.py", line 76, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/starlette/routing.py", line 73, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/fastapi/routing.py", line 290, in app
+    async with AsyncExitStack() as async_exit_stack:
+               ~~~~~~~~~~~~~~^^
+  File "/opt/homebrew/Cellar/python@3.13/3.13.3/Frameworks/Python.framework/Versions/3.13/lib/python3.13/contextlib.py", line 768, in __aexit__
+    raise exc
+  File "/opt/homebrew/Cellar/python@3.13/3.13.3/Frameworks/Python.framework/Versions/3.13/lib/python3.13/contextlib.py", line 751, in __aexit__
+    cb_suppress = await cb(*exc_details)
+                  ^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.13/3.13.3/Frameworks/Python.framework/Versions/3.13/lib/python3.13/contextlib.py", line 235, in __aexit__
+    await self.gen.athrow(value)
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/backend/app/core/database.py", line 15, in get_db
+    async with async_session_local() as session:
+               ~~~~~~~~~~~~~~~~~~~^^
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/sqlalchemy/ext/asyncio/session.py", line 1080, in __aexit__
+    await asyncio.shield(task)
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/sqlalchemy/ext/asyncio/session.py", line 1025, in close
+    await greenlet_spawn(self.sync_session.close)
+          ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/sqlalchemy/util/concurrency.py", line 99, in greenlet_spawn
+    _not_implemented()
+    ~~~~~~~~~~~~~~~~^^
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/sqlalchemy/util/concurrency.py", line 79, in _not_implemented
+    raise ValueError(
+    ...<4 lines>...
+    )
+ValueError: the greenlet library is required to use this function. No module named 'greenlet'
+2025-08-22 17:06:20,573 - pdms_api - ERROR - Unhandled Exception: the greenlet library is required to use this function. No module named 'greenlet' | Path: /api/v1/auth/login_nextjs
+Traceback (most recent call last):
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/backend/app/api/api_v1/endpoints/auth.py", line 31, in login_from_nextjs
+    user = await authenticate_user(db, user_login.username, user_login.password)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/backend/app/crud/app_user.py", line 41, in authenticate_user
+    user = await get_user_by_username(db, username)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/backend/app/crud/app_user.py", line 11, in get_user_by_username
+    result = await db.execute(
+             ^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/sqlalchemy/ext/asyncio/session.py", line 461, in execute
+    result = await greenlet_spawn(
+                   ~~~~~~~~~~~~~~^
+        self.sync_session.execute,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<4 lines>...
+        **kw,
+        ^^^^^
+    )
+    ^
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/sqlalchemy/util/concurrency.py", line 99, in greenlet_spawn
+    _not_implemented()
+    ~~~~~~~~~~~~~~~~^^
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/sqlalchemy/util/concurrency.py", line 79, in _not_implemented
+    raise ValueError(
+    ...<4 lines>...
+    )
+ValueError: the greenlet library is required to use this function. No module named 'greenlet'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/backend/app/core/database.py", line 17, in get_db
+    yield session
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/fastapi/routing.py", line 301, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/fastapi/routing.py", line 212, in run_endpoint_function
+    return await dependant.call(**values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/backend/app/api/api_v1/endpoints/auth.py", line 69, in login_from_nextjs
+    raise HTTPException(
+    ...<2 lines>...
+    )
+fastapi.exceptions.HTTPException: 500: Login failed due to server error
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/starlette/middleware/errors.py", line 165, in __call__
+    await self.app(scope, receive, _send)
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/starlette/middleware/cors.py", line 93, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/starlette/middleware/cors.py", line 144, in simple_response
+    await self.app(scope, receive, send)
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/starlette/middleware/exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/starlette/routing.py", line 715, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/starlette/routing.py", line 735, in app
+    await route.handle(scope, receive, send)
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/starlette/routing.py", line 288, in handle
+    await self.app(scope, receive, send)
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/starlette/routing.py", line 76, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/starlette/routing.py", line 73, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/fastapi/routing.py", line 290, in app
+    async with AsyncExitStack() as async_exit_stack:
+               ~~~~~~~~~~~~~~^^
+  File "/opt/homebrew/Cellar/python@3.13/3.13.3/Frameworks/Python.framework/Versions/3.13/lib/python3.13/contextlib.py", line 768, in __aexit__
+    raise exc
+  File "/opt/homebrew/Cellar/python@3.13/3.13.3/Frameworks/Python.framework/Versions/3.13/lib/python3.13/contextlib.py", line 751, in __aexit__
+    cb_suppress = await cb(*exc_details)
+                  ^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.13/3.13.3/Frameworks/Python.framework/Versions/3.13/lib/python3.13/contextlib.py", line 235, in __aexit__
+    await self.gen.athrow(value)
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/backend/app/core/database.py", line 15, in get_db
+    async with async_session_local() as session:
+               ~~~~~~~~~~~~~~~~~~~^^
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/sqlalchemy/ext/asyncio/session.py", line 1080, in __aexit__
+    await asyncio.shield(task)
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/sqlalchemy/ext/asyncio/session.py", line 1025, in close
+    await greenlet_spawn(self.sync_session.close)
+          ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/sqlalchemy/util/concurrency.py", line 99, in greenlet_spawn
+    _not_implemented()
+    ~~~~~~~~~~~~~~~~^^
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/sqlalchemy/util/concurrency.py", line 79, in _not_implemented
+    raise ValueError(
+    ...<4 lines>...
+    )
+ValueError: the greenlet library is required to use this function. No module named 'greenlet'
+2025-08-22 17:06:21,239 - pdms_api - ERROR - Unhandled Exception: the greenlet library is required to use this function. No module named 'greenlet' | Path: /api/v1/auth/login_nextjs
+Traceback (most recent call last):
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/backend/app/api/api_v1/endpoints/auth.py", line 31, in login_from_nextjs
+    user = await authenticate_user(db, user_login.username, user_login.password)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/backend/app/crud/app_user.py", line 41, in authenticate_user
+    user = await get_user_by_username(db, username)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/backend/app/crud/app_user.py", line 11, in get_user_by_username
+    result = await db.execute(
+             ^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/sqlalchemy/ext/asyncio/session.py", line 461, in execute
+    result = await greenlet_spawn(
+                   ~~~~~~~~~~~~~~^
+        self.sync_session.execute,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<4 lines>...
+        **kw,
+        ^^^^^
+    )
+    ^
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/sqlalchemy/util/concurrency.py", line 99, in greenlet_spawn
+    _not_implemented()
+    ~~~~~~~~~~~~~~~~^^
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/sqlalchemy/util/concurrency.py", line 79, in _not_implemented
+    raise ValueError(
+    ...<4 lines>...
+    )
+ValueError: the greenlet library is required to use this function. No module named 'greenlet'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/backend/app/core/database.py", line 17, in get_db
+    yield session
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/fastapi/routing.py", line 301, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/fastapi/routing.py", line 212, in run_endpoint_function
+    return await dependant.call(**values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/backend/app/api/api_v1/endpoints/auth.py", line 69, in login_from_nextjs
+    raise HTTPException(
+    ...<2 lines>...
+    )
+fastapi.exceptions.HTTPException: 500: Login failed due to server error
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/starlette/middleware/errors.py", line 165, in __call__
+    await self.app(scope, receive, _send)
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/starlette/middleware/cors.py", line 93, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/starlette/middleware/cors.py", line 144, in simple_response
+    await self.app(scope, receive, send)
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/starlette/middleware/exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/starlette/routing.py", line 715, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/starlette/routing.py", line 735, in app
+    await route.handle(scope, receive, send)
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/starlette/routing.py", line 288, in handle
+    await self.app(scope, receive, send)
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/starlette/routing.py", line 76, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/starlette/routing.py", line 73, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/fastapi/routing.py", line 290, in app
+    async with AsyncExitStack() as async_exit_stack:
+               ~~~~~~~~~~~~~~^^
+  File "/opt/homebrew/Cellar/python@3.13/3.13.3/Frameworks/Python.framework/Versions/3.13/lib/python3.13/contextlib.py", line 768, in __aexit__
+    raise exc
+  File "/opt/homebrew/Cellar/python@3.13/3.13.3/Frameworks/Python.framework/Versions/3.13/lib/python3.13/contextlib.py", line 751, in __aexit__
+    cb_suppress = await cb(*exc_details)
+                  ^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.13/3.13.3/Frameworks/Python.framework/Versions/3.13/lib/python3.13/contextlib.py", line 235, in __aexit__
+    await self.gen.athrow(value)
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/backend/app/core/database.py", line 15, in get_db
+    async with async_session_local() as session:
+               ~~~~~~~~~~~~~~~~~~~^^
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/sqlalchemy/ext/asyncio/session.py", line 1080, in __aexit__
+    await asyncio.shield(task)
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/sqlalchemy/ext/asyncio/session.py", line 1025, in close
+    await greenlet_spawn(self.sync_session.close)
+          ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/sqlalchemy/util/concurrency.py", line 99, in greenlet_spawn
+    _not_implemented()
+    ~~~~~~~~~~~~~~~~^^
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/sqlalchemy/util/concurrency.py", line 79, in _not_implemented
+    raise ValueError(
+    ...<4 lines>...
+    )
+ValueError: the greenlet library is required to use this function. No module named 'greenlet'
+2025-08-22 17:25:17,761 - pdms_api - ERROR - Unhandled Exception: the greenlet library is required to use this function. No module named 'greenlet' | Path: /api/v1/auth/login_nextjs
+Traceback (most recent call last):
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/backend/app/api/api_v1/endpoints/auth.py", line 31, in login_from_nextjs
+    user = await authenticate_user(db, user_login.username, user_login.password)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/backend/app/crud/app_user.py", line 43, in authenticate_user
+    user = await get_user_by_username(db, username)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/backend/app/crud/app_user.py", line 13, in get_user_by_username
+    result = await db.execute(
+             ^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/sqlalchemy/ext/asyncio/session.py", line 461, in execute
+    result = await greenlet_spawn(
+                   ~~~~~~~~~~~~~~^
+        self.sync_session.execute,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<4 lines>...
+        **kw,
+        ^^^^^
+    )
+    ^
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/sqlalchemy/util/concurrency.py", line 99, in greenlet_spawn
+    _not_implemented()
+    ~~~~~~~~~~~~~~~~^^
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/sqlalchemy/util/concurrency.py", line 79, in _not_implemented
+    raise ValueError(
+    ...<4 lines>...
+    )
+ValueError: the greenlet library is required to use this function. No module named 'greenlet'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/backend/app/core/database.py", line 17, in get_db
+    yield session
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/fastapi/routing.py", line 301, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/fastapi/routing.py", line 212, in run_endpoint_function
+    return await dependant.call(**values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/backend/app/api/api_v1/endpoints/auth.py", line 69, in login_from_nextjs
+    raise HTTPException(
+    ...<2 lines>...
+    )
+fastapi.exceptions.HTTPException: 500: Login failed due to server error
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/starlette/middleware/errors.py", line 165, in __call__
+    await self.app(scope, receive, _send)
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/starlette/middleware/cors.py", line 93, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/starlette/middleware/cors.py", line 144, in simple_response
+    await self.app(scope, receive, send)
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/starlette/middleware/exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/starlette/routing.py", line 715, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/starlette/routing.py", line 735, in app
+    await route.handle(scope, receive, send)
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/starlette/routing.py", line 288, in handle
+    await self.app(scope, receive, send)
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/starlette/routing.py", line 76, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/starlette/routing.py", line 73, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/fastapi/routing.py", line 290, in app
+    async with AsyncExitStack() as async_exit_stack:
+               ~~~~~~~~~~~~~~^^
+  File "/opt/homebrew/Cellar/python@3.13/3.13.3/Frameworks/Python.framework/Versions/3.13/lib/python3.13/contextlib.py", line 768, in __aexit__
+    raise exc
+  File "/opt/homebrew/Cellar/python@3.13/3.13.3/Frameworks/Python.framework/Versions/3.13/lib/python3.13/contextlib.py", line 751, in __aexit__
+    cb_suppress = await cb(*exc_details)
+                  ^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.13/3.13.3/Frameworks/Python.framework/Versions/3.13/lib/python3.13/contextlib.py", line 235, in __aexit__
+    await self.gen.athrow(value)
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/backend/app/core/database.py", line 15, in get_db
+    async with async_session_local() as session:
+               ~~~~~~~~~~~~~~~~~~~^^
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/sqlalchemy/ext/asyncio/session.py", line 1080, in __aexit__
+    await asyncio.shield(task)
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/sqlalchemy/ext/asyncio/session.py", line 1025, in close
+    await greenlet_spawn(self.sync_session.close)
+          ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/sqlalchemy/util/concurrency.py", line 99, in greenlet_spawn
+    _not_implemented()
+    ~~~~~~~~~~~~~~~~^^
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/sqlalchemy/util/concurrency.py", line 79, in _not_implemented
+    raise ValueError(
+    ...<4 lines>...
+    )
+ValueError: the greenlet library is required to use this function. No module named 'greenlet'
+2025-08-22 17:25:18,559 - pdms_api - ERROR - Unhandled Exception: the greenlet library is required to use this function. No module named 'greenlet' | Path: /api/v1/auth/login_nextjs
+Traceback (most recent call last):
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/backend/app/api/api_v1/endpoints/auth.py", line 31, in login_from_nextjs
+    user = await authenticate_user(db, user_login.username, user_login.password)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/backend/app/crud/app_user.py", line 43, in authenticate_user
+    user = await get_user_by_username(db, username)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/backend/app/crud/app_user.py", line 13, in get_user_by_username
+    result = await db.execute(
+             ^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/sqlalchemy/ext/asyncio/session.py", line 461, in execute
+    result = await greenlet_spawn(
+                   ~~~~~~~~~~~~~~^
+        self.sync_session.execute,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<4 lines>...
+        **kw,
+        ^^^^^
+    )
+    ^
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/sqlalchemy/util/concurrency.py", line 99, in greenlet_spawn
+    _not_implemented()
+    ~~~~~~~~~~~~~~~~^^
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/sqlalchemy/util/concurrency.py", line 79, in _not_implemented
+    raise ValueError(
+    ...<4 lines>...
+    )
+ValueError: the greenlet library is required to use this function. No module named 'greenlet'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/backend/app/core/database.py", line 17, in get_db
+    yield session
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/fastapi/routing.py", line 301, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/fastapi/routing.py", line 212, in run_endpoint_function
+    return await dependant.call(**values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/backend/app/api/api_v1/endpoints/auth.py", line 69, in login_from_nextjs
+    raise HTTPException(
+    ...<2 lines>...
+    )
+fastapi.exceptions.HTTPException: 500: Login failed due to server error
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/starlette/middleware/errors.py", line 165, in __call__
+    await self.app(scope, receive, _send)
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/starlette/middleware/cors.py", line 93, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/starlette/middleware/cors.py", line 144, in simple_response
+    await self.app(scope, receive, send)
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/starlette/middleware/exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/starlette/routing.py", line 715, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/starlette/routing.py", line 735, in app
+    await route.handle(scope, receive, send)
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/starlette/routing.py", line 288, in handle
+    await self.app(scope, receive, send)
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/starlette/routing.py", line 76, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/starlette/routing.py", line 73, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/fastapi/routing.py", line 290, in app
+    async with AsyncExitStack() as async_exit_stack:
+               ~~~~~~~~~~~~~~^^
+  File "/opt/homebrew/Cellar/python@3.13/3.13.3/Frameworks/Python.framework/Versions/3.13/lib/python3.13/contextlib.py", line 768, in __aexit__
+    raise exc
+  File "/opt/homebrew/Cellar/python@3.13/3.13.3/Frameworks/Python.framework/Versions/3.13/lib/python3.13/contextlib.py", line 751, in __aexit__
+    cb_suppress = await cb(*exc_details)
+                  ^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.13/3.13.3/Frameworks/Python.framework/Versions/3.13/lib/python3.13/contextlib.py", line 235, in __aexit__
+    await self.gen.athrow(value)
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/backend/app/core/database.py", line 15, in get_db
+    async with async_session_local() as session:
+               ~~~~~~~~~~~~~~~~~~~^^
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/sqlalchemy/ext/asyncio/session.py", line 1080, in __aexit__
+    await asyncio.shield(task)
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/sqlalchemy/ext/asyncio/session.py", line 1025, in close
+    await greenlet_spawn(self.sync_session.close)
+          ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/sqlalchemy/util/concurrency.py", line 99, in greenlet_spawn
+    _not_implemented()
+    ~~~~~~~~~~~~~~~~^^
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/sqlalchemy/util/concurrency.py", line 79, in _not_implemented
+    raise ValueError(
+    ...<4 lines>...
+    )
+ValueError: the greenlet library is required to use this function. No module named 'greenlet'
+2025-08-22 17:25:30,771 - pdms_api - ERROR - Unhandled Exception: the greenlet library is required to use this function. No module named 'greenlet' | Path: /api/v1/auth/login_nextjs
+Traceback (most recent call last):
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/backend/app/api/api_v1/endpoints/auth.py", line 31, in login_from_nextjs
+    user = await authenticate_user(db, user_login.username, user_login.password)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/backend/app/crud/app_user.py", line 43, in authenticate_user
+    user = await get_user_by_username(db, username)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/backend/app/crud/app_user.py", line 13, in get_user_by_username
+    result = await db.execute(
+             ^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/sqlalchemy/ext/asyncio/session.py", line 461, in execute
+    result = await greenlet_spawn(
+                   ~~~~~~~~~~~~~~^
+        self.sync_session.execute,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<4 lines>...
+        **kw,
+        ^^^^^
+    )
+    ^
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/sqlalchemy/util/concurrency.py", line 99, in greenlet_spawn
+    _not_implemented()
+    ~~~~~~~~~~~~~~~~^^
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/sqlalchemy/util/concurrency.py", line 79, in _not_implemented
+    raise ValueError(
+    ...<4 lines>...
+    )
+ValueError: the greenlet library is required to use this function. No module named 'greenlet'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/backend/app/core/database.py", line 17, in get_db
+    yield session
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/fastapi/routing.py", line 301, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/fastapi/routing.py", line 212, in run_endpoint_function
+    return await dependant.call(**values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/backend/app/api/api_v1/endpoints/auth.py", line 69, in login_from_nextjs
+    raise HTTPException(
+    ...<2 lines>...
+    )
+fastapi.exceptions.HTTPException: 500: Login failed due to server error
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/starlette/middleware/errors.py", line 165, in __call__
+    await self.app(scope, receive, _send)
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/starlette/middleware/cors.py", line 93, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/starlette/middleware/cors.py", line 144, in simple_response
+    await self.app(scope, receive, send)
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/starlette/middleware/exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/starlette/routing.py", line 715, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/starlette/routing.py", line 735, in app
+    await route.handle(scope, receive, send)
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/starlette/routing.py", line 288, in handle
+    await self.app(scope, receive, send)
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/starlette/routing.py", line 76, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/starlette/routing.py", line 73, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/fastapi/routing.py", line 290, in app
+    async with AsyncExitStack() as async_exit_stack:
+               ~~~~~~~~~~~~~~^^
+  File "/opt/homebrew/Cellar/python@3.13/3.13.3/Frameworks/Python.framework/Versions/3.13/lib/python3.13/contextlib.py", line 768, in __aexit__
+    raise exc
+  File "/opt/homebrew/Cellar/python@3.13/3.13.3/Frameworks/Python.framework/Versions/3.13/lib/python3.13/contextlib.py", line 751, in __aexit__
+    cb_suppress = await cb(*exc_details)
+                  ^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.13/3.13.3/Frameworks/Python.framework/Versions/3.13/lib/python3.13/contextlib.py", line 235, in __aexit__
+    await self.gen.athrow(value)
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/backend/app/core/database.py", line 15, in get_db
+    async with async_session_local() as session:
+               ~~~~~~~~~~~~~~~~~~~^^
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/sqlalchemy/ext/asyncio/session.py", line 1080, in __aexit__
+    await asyncio.shield(task)
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/sqlalchemy/ext/asyncio/session.py", line 1025, in close
+    await greenlet_spawn(self.sync_session.close)
+          ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/sqlalchemy/util/concurrency.py", line 99, in greenlet_spawn
+    _not_implemented()
+    ~~~~~~~~~~~~~~~~^^
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/sqlalchemy/util/concurrency.py", line 79, in _not_implemented
+    raise ValueError(
+    ...<4 lines>...
+    )
+ValueError: the greenlet library is required to use this function. No module named 'greenlet'
+2025-08-22 17:25:31,753 - pdms_api - ERROR - Unhandled Exception: the greenlet library is required to use this function. No module named 'greenlet' | Path: /api/v1/auth/login_nextjs
+Traceback (most recent call last):
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/backend/app/api/api_v1/endpoints/auth.py", line 31, in login_from_nextjs
+    user = await authenticate_user(db, user_login.username, user_login.password)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/backend/app/crud/app_user.py", line 43, in authenticate_user
+    user = await get_user_by_username(db, username)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/backend/app/crud/app_user.py", line 13, in get_user_by_username
+    result = await db.execute(
+             ^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/sqlalchemy/ext/asyncio/session.py", line 461, in execute
+    result = await greenlet_spawn(
+                   ~~~~~~~~~~~~~~^
+        self.sync_session.execute,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<4 lines>...
+        **kw,
+        ^^^^^
+    )
+    ^
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/sqlalchemy/util/concurrency.py", line 99, in greenlet_spawn
+    _not_implemented()
+    ~~~~~~~~~~~~~~~~^^
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/sqlalchemy/util/concurrency.py", line 79, in _not_implemented
+    raise ValueError(
+    ...<4 lines>...
+    )
+ValueError: the greenlet library is required to use this function. No module named 'greenlet'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/backend/app/core/database.py", line 17, in get_db
+    yield session
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/fastapi/routing.py", line 301, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/fastapi/routing.py", line 212, in run_endpoint_function
+    return await dependant.call(**values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/backend/app/api/api_v1/endpoints/auth.py", line 69, in login_from_nextjs
+    raise HTTPException(
+    ...<2 lines>...
+    )
+fastapi.exceptions.HTTPException: 500: Login failed due to server error
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/starlette/middleware/errors.py", line 165, in __call__
+    await self.app(scope, receive, _send)
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/starlette/middleware/cors.py", line 93, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/starlette/middleware/cors.py", line 144, in simple_response
+    await self.app(scope, receive, send)
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/starlette/middleware/exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/starlette/routing.py", line 715, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/starlette/routing.py", line 735, in app
+    await route.handle(scope, receive, send)
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/starlette/routing.py", line 288, in handle
+    await self.app(scope, receive, send)
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/starlette/routing.py", line 76, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/starlette/routing.py", line 73, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/fastapi/routing.py", line 290, in app
+    async with AsyncExitStack() as async_exit_stack:
+               ~~~~~~~~~~~~~~^^
+  File "/opt/homebrew/Cellar/python@3.13/3.13.3/Frameworks/Python.framework/Versions/3.13/lib/python3.13/contextlib.py", line 768, in __aexit__
+    raise exc
+  File "/opt/homebrew/Cellar/python@3.13/3.13.3/Frameworks/Python.framework/Versions/3.13/lib/python3.13/contextlib.py", line 751, in __aexit__
+    cb_suppress = await cb(*exc_details)
+                  ^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.13/3.13.3/Frameworks/Python.framework/Versions/3.13/lib/python3.13/contextlib.py", line 235, in __aexit__
+    await self.gen.athrow(value)
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/backend/app/core/database.py", line 15, in get_db
+    async with async_session_local() as session:
+               ~~~~~~~~~~~~~~~~~~~^^
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/sqlalchemy/ext/asyncio/session.py", line 1080, in __aexit__
+    await asyncio.shield(task)
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/sqlalchemy/ext/asyncio/session.py", line 1025, in close
+    await greenlet_spawn(self.sync_session.close)
+          ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/sqlalchemy/util/concurrency.py", line 99, in greenlet_spawn
+    _not_implemented()
+    ~~~~~~~~~~~~~~~~^^
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/sqlalchemy/util/concurrency.py", line 79, in _not_implemented
+    raise ValueError(
+    ...<4 lines>...
+    )
+ValueError: the greenlet library is required to use this function. No module named 'greenlet'
+2025-08-22 17:28:29,585 - pdms_api - ERROR - Unhandled Exception: the greenlet library is required to use this function. No module named 'greenlet' | Path: /api/v1/auth/login_nextjs
+Traceback (most recent call last):
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/backend/app/api/api_v1/endpoints/auth.py", line 31, in login_from_nextjs
+    user = await authenticate_user(db, user_login.username, user_login.password)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/backend/app/crud/app_user.py", line 43, in authenticate_user
+    user = await get_user_by_username(db, username)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/backend/app/crud/app_user.py", line 13, in get_user_by_username
+    result = await db.execute(
+             ^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/sqlalchemy/ext/asyncio/session.py", line 461, in execute
+    result = await greenlet_spawn(
+                   ~~~~~~~~~~~~~~^
+        self.sync_session.execute,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<4 lines>...
+        **kw,
+        ^^^^^
+    )
+    ^
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/sqlalchemy/util/concurrency.py", line 99, in greenlet_spawn
+    _not_implemented()
+    ~~~~~~~~~~~~~~~~^^
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/sqlalchemy/util/concurrency.py", line 79, in _not_implemented
+    raise ValueError(
+    ...<4 lines>...
+    )
+ValueError: the greenlet library is required to use this function. No module named 'greenlet'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/backend/app/core/database.py", line 17, in get_db
+    yield session
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/fastapi/routing.py", line 301, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/fastapi/routing.py", line 212, in run_endpoint_function
+    return await dependant.call(**values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/backend/app/api/api_v1/endpoints/auth.py", line 69, in login_from_nextjs
+    raise HTTPException(
+    ...<2 lines>...
+    )
+fastapi.exceptions.HTTPException: 500: Login failed due to server error
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/starlette/middleware/errors.py", line 165, in __call__
+    await self.app(scope, receive, _send)
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/starlette/middleware/cors.py", line 93, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/starlette/middleware/cors.py", line 144, in simple_response
+    await self.app(scope, receive, send)
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/starlette/middleware/exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/starlette/routing.py", line 715, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/starlette/routing.py", line 735, in app
+    await route.handle(scope, receive, send)
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/starlette/routing.py", line 288, in handle
+    await self.app(scope, receive, send)
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/starlette/routing.py", line 76, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/starlette/routing.py", line 73, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/fastapi/routing.py", line 290, in app
+    async with AsyncExitStack() as async_exit_stack:
+               ~~~~~~~~~~~~~~^^
+  File "/opt/homebrew/Cellar/python@3.13/3.13.3/Frameworks/Python.framework/Versions/3.13/lib/python3.13/contextlib.py", line 768, in __aexit__
+    raise exc
+  File "/opt/homebrew/Cellar/python@3.13/3.13.3/Frameworks/Python.framework/Versions/3.13/lib/python3.13/contextlib.py", line 751, in __aexit__
+    cb_suppress = await cb(*exc_details)
+                  ^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.13/3.13.3/Frameworks/Python.framework/Versions/3.13/lib/python3.13/contextlib.py", line 235, in __aexit__
+    await self.gen.athrow(value)
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/backend/app/core/database.py", line 15, in get_db
+    async with async_session_local() as session:
+               ~~~~~~~~~~~~~~~~~~~^^
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/sqlalchemy/ext/asyncio/session.py", line 1080, in __aexit__
+    await asyncio.shield(task)
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/sqlalchemy/ext/asyncio/session.py", line 1025, in close
+    await greenlet_spawn(self.sync_session.close)
+          ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/sqlalchemy/util/concurrency.py", line 99, in greenlet_spawn
+    _not_implemented()
+    ~~~~~~~~~~~~~~~~^^
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/sqlalchemy/util/concurrency.py", line 79, in _not_implemented
+    raise ValueError(
+    ...<4 lines>...
+    )
+ValueError: the greenlet library is required to use this function. No module named 'greenlet'
+2025-08-22 17:31:13,348 - pdms_api - ERROR - Unhandled Exception: the greenlet library is required to use this function. No module named 'greenlet' | Path: /api/v1/auth/login_nextjs
+Traceback (most recent call last):
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/backend/app/api/api_v1/endpoints/auth.py", line 31, in login_from_nextjs
+    user = await authenticate_user(db, user_login.username, user_login.password)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/backend/app/crud/app_user.py", line 43, in authenticate_user
+    user = await get_user_by_username(db, username)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/backend/app/crud/app_user.py", line 13, in get_user_by_username
+    result = await db.execute(
+             ^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/sqlalchemy/ext/asyncio/session.py", line 461, in execute
+    result = await greenlet_spawn(
+                   ~~~~~~~~~~~~~~^
+        self.sync_session.execute,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<4 lines>...
+        **kw,
+        ^^^^^
+    )
+    ^
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/sqlalchemy/util/concurrency.py", line 99, in greenlet_spawn
+    _not_implemented()
+    ~~~~~~~~~~~~~~~~^^
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/sqlalchemy/util/concurrency.py", line 79, in _not_implemented
+    raise ValueError(
+    ...<4 lines>...
+    )
+ValueError: the greenlet library is required to use this function. No module named 'greenlet'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/backend/app/core/database.py", line 17, in get_db
+    yield session
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/fastapi/routing.py", line 301, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/fastapi/routing.py", line 212, in run_endpoint_function
+    return await dependant.call(**values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/backend/app/api/api_v1/endpoints/auth.py", line 69, in login_from_nextjs
+    raise HTTPException(
+    ...<2 lines>...
+    )
+fastapi.exceptions.HTTPException: 500: Login failed due to server error
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/starlette/middleware/errors.py", line 165, in __call__
+    await self.app(scope, receive, _send)
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/starlette/middleware/cors.py", line 93, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/starlette/middleware/cors.py", line 144, in simple_response
+    await self.app(scope, receive, send)
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/starlette/middleware/exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/starlette/routing.py", line 715, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/starlette/routing.py", line 735, in app
+    await route.handle(scope, receive, send)
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/starlette/routing.py", line 288, in handle
+    await self.app(scope, receive, send)
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/starlette/routing.py", line 76, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/starlette/routing.py", line 73, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/fastapi/routing.py", line 290, in app
+    async with AsyncExitStack() as async_exit_stack:
+               ~~~~~~~~~~~~~~^^
+  File "/opt/homebrew/Cellar/python@3.13/3.13.3/Frameworks/Python.framework/Versions/3.13/lib/python3.13/contextlib.py", line 768, in __aexit__
+    raise exc
+  File "/opt/homebrew/Cellar/python@3.13/3.13.3/Frameworks/Python.framework/Versions/3.13/lib/python3.13/contextlib.py", line 751, in __aexit__
+    cb_suppress = await cb(*exc_details)
+                  ^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.13/3.13.3/Frameworks/Python.framework/Versions/3.13/lib/python3.13/contextlib.py", line 235, in __aexit__
+    await self.gen.athrow(value)
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/backend/app/core/database.py", line 15, in get_db
+    async with async_session_local() as session:
+               ~~~~~~~~~~~~~~~~~~~^^
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/sqlalchemy/ext/asyncio/session.py", line 1080, in __aexit__
+    await asyncio.shield(task)
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/sqlalchemy/ext/asyncio/session.py", line 1025, in close
+    await greenlet_spawn(self.sync_session.close)
+          ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/sqlalchemy/util/concurrency.py", line 99, in greenlet_spawn
+    _not_implemented()
+    ~~~~~~~~~~~~~~~~^^
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/venv/lib/python3.13/site-packages/sqlalchemy/util/concurrency.py", line 79, in _not_implemented
+    raise ValueError(
+    ...<4 lines>...
+    )
+ValueError: the greenlet library is required to use this function. No module named 'greenlet'
+2025-08-22 17:31:56,604 - passlib.handlers.bcrypt - WARNING - (trapped) error reading bcrypt version
+Traceback (most recent call last):
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/backend/venv/lib/python3.13/site-packages/passlib/handlers/bcrypt.py", line 620, in _load_backend_mixin
+    version = _bcrypt.__about__.__version__
+              ^^^^^^^^^^^^^^^^^
+AttributeError: module 'bcrypt' has no attribute '__about__'
+2025-08-22 18:30:02,666 - passlib.handlers.bcrypt - WARNING - (trapped) error reading bcrypt version
+Traceback (most recent call last):
+  File "/Users/demessinovrakhymzhan/Desktop/pdms/backend/venv/lib/python3.13/site-packages/passlib/handlers/bcrypt.py", line 620, in _load_backend_mixin
+    version = _bcrypt.__about__.__version__
+              ^^^^^^^^^^^^^^^^^
+AttributeError: module 'bcrypt' has no attribute '__about__'

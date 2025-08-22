@@ -2,9 +2,8 @@ import type React from "react"
 import type { Metadata } from "next"
 import { Inter } from "next/font/google"
 import "./globals.css"
-import { SidebarProvider, SidebarInset } from "@/components/ui/sidebar"
-import { AppSidebar } from "@/components/app-sidebar"
 import { AuthProvider } from "@/lib/auth-context"
+import { ConditionalLayout } from "@/components/conditional-layout"
 
 const inter = Inter({ subsets: ["latin"] })
 
@@ -22,12 +21,9 @@ export default function RootLayout({
     <html lang="ru">
       <body className={inter.className}>
         <AuthProvider>
-          <SidebarProvider>
-            <AppSidebar />
-            <SidebarInset>
-              <main className="flex-1 overflow-auto">{children}</main>
-            </SidebarInset>
-          </SidebarProvider>
+          <ConditionalLayout>
+            {children}
+          </ConditionalLayout>
         </AuthProvider>
       </body>
     </html>

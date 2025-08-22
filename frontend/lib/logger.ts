@@ -5,13 +5,13 @@ interface LogEntry {
   level: LogLevel
   message: string
   timestamp: string
-  data?: any
+  data?: unknown
 }
 
 class Logger {
   private isDevelopment = process.env.NODE_ENV === 'development'
 
-  private createLogEntry(level: LogLevel, message: string, data?: any): LogEntry {
+  private createLogEntry(level: LogLevel, message: string, data?: unknown): LogEntry {
     return {
       level,
       message,
@@ -30,19 +30,19 @@ class Logger {
     }
   }
 
-  debug(message: string, data?: any) {
+  debug(message: string, data?: unknown) {
     this.log(this.createLogEntry('debug', message, data))
   }
 
-  info(message: string, data?: any) {
+  info(message: string, data?: unknown) {
     this.log(this.createLogEntry('info', message, data))
   }
 
-  warn(message: string, data?: any) {
+  warn(message: string, data?: unknown) {
     this.log(this.createLogEntry('warn', message, data))
   }
 
-  error(message: string, error?: any) {
+  error(message: string, error?: unknown) {
     this.log(this.createLogEntry('error', message, error))
   }
 
@@ -51,11 +51,11 @@ class Logger {
     this.info(`API Request: ${method} ${endpoint}`)
   }
 
-  apiResponse(endpoint: string, status: number, data?: any) {
+  apiResponse(endpoint: string, status: number, data?: unknown) {
     this.info(`API Response: ${endpoint} - Status: ${status}`, data)
   }
 
-  apiError(endpoint: string, error: any) {
+  apiError(endpoint: string, error: unknown) {
     this.error(`API Error: ${endpoint}`, error)
   }
 }
