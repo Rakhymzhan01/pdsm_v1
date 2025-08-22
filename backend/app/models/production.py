@@ -4,10 +4,16 @@ from app.core.database import Base
 class Production(Base):
     __tablename__ = "prod"
     
-    id = Column(Integer, primary_key=True, index=True)
-    Date = Column(Date)
-    well = Column(String)
-    Qo_ton = Column(Float)
-    Qw_m3 = Column(Float)
-    Ql_m3 = Column(Float)
-    Obv_percent = Column(Float)
+    Date = Column("Date", Date, primary_key=True)
+    Well = Column("Well", String, primary_key=True)
+    Horizon = Column("Horizon", String)
+    Pump = Column("Pump", Float)
+    H_m = Column("H_m", Float)
+    Ptr_atm = Column("Ptr_atm", Float)
+    Pztr_atm = Column("Pztr_atm", Float)
+    Time_hr = Column("Time_hr", Float)
+    Ql_m3 = Column("Ql_m3", Float)
+    Qo_m3 = Column("Qo_m3", Float)
+    Qw_m3 = Column("Qw_m3", Float)
+    Qo_ton = Column("Qo_ton", Float)
+    Qi_m3 = Column("Qi_m3", Float)

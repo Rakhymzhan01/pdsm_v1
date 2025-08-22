@@ -3,11 +3,13 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
-import { BarChart3, TrendingUp, MapPin, Activity, Database, AlertCircle, Crown } from "lucide-react"
+import { BarChart3, TrendingUp, Activity, Database, AlertCircle, Crown } from "lucide-react"
 import { useWells, useProductionData } from "@/hooks/use-api"
 import { useState, useEffect } from "react"
 import { apiClient } from "@/lib/api-client"
 import { withAuth, useAuth } from "@/lib/auth-context"
+import { KaratobeMap } from "@/components/karatobe-map"
+import { EnhancedProductionChart } from "@/components/enhanced-production-chart"
 import Link from "next/link"
 
 function HomePage() {
@@ -140,15 +142,7 @@ function HomePage() {
             <CardTitle>Карта текущих отборов на 10 июля 2025</CardTitle>
           </CardHeader>
           <CardContent className="pl-2">
-            <div className="h-[350px] bg-muted rounded-lg flex items-center justify-center">
-              <div className="text-center">
-                <MapPin className="h-12 w-12 mx-auto mb-4 text-muted-foreground" />
-                <p className="text-muted-foreground">Интерактивная карта месторождения</p>
-                <p className="text-sm text-muted-foreground mt-2">
-                  Здесь будет отображаться карта с расположением скважин
-                </p>
-              </div>
-            </div>
+            <KaratobeMap />
           </CardContent>
         </Card>
 
@@ -193,16 +187,13 @@ function HomePage() {
 
       <Card>
         <CardHeader>
-          <CardTitle>История Добычи м. Каратюбе</CardTitle>
+          <CardTitle>История добычи нефти по месяцам</CardTitle>
+          <CardDescription>
+            Динамика месячной добычи нефти по месторождению Каратюбе (июль-сентябрь 2022)
+          </CardDescription>
         </CardHeader>
         <CardContent>
-          <div className="h-[200px] bg-muted rounded-lg flex items-center justify-center">
-            <div className="text-center">
-              <BarChart3 className="h-12 w-12 mx-auto mb-4 text-muted-foreground" />
-              <p className="text-muted-foreground">График истории добычи</p>
-              <p className="text-sm text-muted-foreground mt-2">Временной ряд показателей добычи нефти</p>
-            </div>
-          </div>
+          <EnhancedProductionChart />
         </CardContent>
       </Card>
 
