@@ -33,7 +33,7 @@ export function WellPerformanceHeatmap() {
         const result = await response.json()
         
         // Calculate efficiency score for each well
-        const processedData = result.map((well: any) => {
+        const processedData = result.map((well: {well_name: string; object_type: string; horizon: string; cumulative_oil: number; cumulative_water: number; avg_daily_oil: number; production_days: number}) => {
           // Efficiency score based on avg daily production, production days, and cumulative oil
           const dailyScore = Math.min(well.avg_daily_oil / 30, 1) // Normalize to 30 tons/day max
           const daysScore = Math.min(well.production_days / 1000, 1) // Normalize to 1000 days max
@@ -93,13 +93,6 @@ export function WellPerformanceHeatmap() {
     return 'bg-gray-400'                      // Poor
   }
 
-  const getPerformanceLabel = (score: number) => {
-    if (score >= 80) return 'Отличная'
-    if (score >= 60) return 'Хорошая'
-    if (score >= 40) return 'Средняя'
-    if (score >= 20) return 'Низкая'
-    return 'Плохая'
-  }
 
   if (loading) {
     return (

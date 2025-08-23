@@ -29,7 +29,7 @@ export function CumulativeProductionMap() {
   const [data, setData] = useState<CumulativeProductionData[]>([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
-  const [mapBounds, setMapBounds] = useState<mapboxgl.LngLatBounds | null>(null)
+  const [, setMapBounds] = useState<mapboxgl.LngLatBounds | null>(null)
   const [hasInitialized, setHasInitialized] = useState(false)
 
   // Fetch cumulative production data
@@ -51,7 +51,7 @@ export function CumulativeProductionMap() {
         if (result.length > 0) {
           const coordinates = result.map((well: CumulativeProductionData) => [well.longitude, well.latitude] as [number, number])
           const bounds = new mapboxgl.LngLatBounds()
-          coordinates.forEach(coord => bounds.extend(coord))
+          coordinates.forEach((coord: [number, number]) => bounds.extend(coord))
           setMapBounds(bounds)
         }
       } catch (err) {
@@ -209,7 +209,7 @@ export function CumulativeProductionMap() {
     
     // Create bounds from coordinates
     const bounds = new mapboxgl.LngLatBounds()
-    coordinates.forEach(coord => bounds.extend(coord))
+    coordinates.forEach((coord: [number, number]) => bounds.extend(coord))
 
     console.log('Bounds:', bounds.getNorthEast(), bounds.getSouthWest())
 

@@ -1,8 +1,8 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { BarChart3, TrendingUp } from "lucide-react"
 import { CumulativeProductionMap } from "@/components/cumulative-production-map"
 import { WellPerformanceHeatmap } from "@/components/well-performance-heatmap"
+import { FieldProductionHistoryChart } from "@/components/field-production-history-chart"
 
 export default function SummaryPage() {
   return (
@@ -47,15 +47,7 @@ export default function SummaryPage() {
           <CardDescription>Временной ряд показателей добычи нефти и воды</CardDescription>
         </CardHeader>
         <CardContent>
-          <div className="h-[300px] bg-muted rounded-lg flex items-center justify-center">
-            <div className="text-center">
-              <BarChart3 className="h-16 w-16 mx-auto mb-4 text-muted-foreground" />
-              <p className="text-lg font-medium text-muted-foreground">График истории добычи</p>
-              <p className="text-sm text-muted-foreground mt-2">
-                Динамика добычи нефти, газа и воды с начала эксплуатации
-              </p>
-            </div>
-          </div>
+          <FieldProductionHistoryChart />
         </CardContent>
       </Card>
 
