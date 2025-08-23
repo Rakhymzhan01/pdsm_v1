@@ -2,6 +2,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge"
 import { BarChart3, TrendingUp } from "lucide-react"
 import { CumulativeProductionMap } from "@/components/cumulative-production-map"
+import { WellPerformanceHeatmap } from "@/components/well-performance-heatmap"
 
 export default function SummaryPage() {
   return (
@@ -31,18 +32,10 @@ export default function SummaryPage() {
         <Card>
           <CardHeader>
             <CardTitle>Тепловая карта скважин</CardTitle>
-            <CardDescription>Производительность скважин</CardDescription>
+            <CardDescription>Производительность скважин по эффективности</CardDescription>
           </CardHeader>
           <CardContent>
-            <div className="h-[400px] bg-muted rounded-lg flex items-center justify-center">
-              <div className="text-center">
-                <TrendingUp className="h-12 w-12 mx-auto mb-4 text-muted-foreground" />
-                <p className="text-muted-foreground">Тепловая карта</p>
-                <p className="text-xs text-muted-foreground mt-2">
-                  Сравнение дебитов скважин
-                </p>
-              </div>
-            </div>
+            <WellPerformanceHeatmap />
           </CardContent>
         </Card>
       </div>
