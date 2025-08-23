@@ -153,10 +153,16 @@ export function KaratobeMap() {
         })
       }
 
-      // Remove existing event listeners to prevent duplicates
-      map.current?.off('click', 'wells')
-      map.current?.off('mouseenter', 'wells') 
-      map.current?.off('mouseleave', 'wells')
+      // Remove existing layers if they exist
+      if (map.current?.getLayer('wells-labels')) {
+        map.current.removeLayer('wells-labels')
+      }
+      if (map.current?.getLayer('wells')) {
+        map.current.removeLayer('wells')
+      }
+      if (map.current?.getSource('wells')) {
+        map.current.removeSource('wells')
+      }
 
       // Add click event for well popups
       map.current?.on('click', 'wells', (e) => {

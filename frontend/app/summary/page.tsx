@@ -1,6 +1,7 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { MapPin, BarChart3, TrendingUp } from "lucide-react"
+import { BarChart3, TrendingUp } from "lucide-react"
+import { CumulativeProductionMap } from "@/components/cumulative-production-map"
 
 export default function SummaryPage() {
   return (
@@ -22,15 +23,7 @@ export default function SummaryPage() {
             <CardDescription>Пространственное распределение добычи по скважинам</CardDescription>
           </CardHeader>
           <CardContent>
-            <div className="h-[400px] bg-muted rounded-lg flex items-center justify-center">
-              <div className="text-center">
-                <MapPin className="h-16 w-16 mx-auto mb-4 text-muted-foreground" />
-                <p className="text-lg font-medium text-muted-foreground">Карта накопленных отборов</p>
-                <p className="text-sm text-muted-foreground mt-2">
-                  Интерактивная карта с цветовым кодированием по объемам добычи
-                </p>
-              </div>
-            </div>
+            <CumulativeProductionMap />
           </CardContent>
         </Card>
 

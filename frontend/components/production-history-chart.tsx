@@ -52,7 +52,13 @@ export function ProductionHistoryChart() {
       }
       
       return acc
-    }, {} as Record<string, any>)
+    }, {} as Record<string, {
+      totalOil: number;
+      totalWater: number;
+      totalLiquid: number;
+      waterCuts: number[];
+      wells: Set<string>;
+    }>)
 
     return Object.entries(grouped)
       .map(([date, values]) => ({
@@ -199,11 +205,13 @@ export function ProductionHistoryChart() {
       })
 
     // X axis
+    const bottomAxis = d3.axisBottom(xScale)
+      .tickFormat((d) => d3.timeFormat('%d.%m')(d as Date))
+      .ticks(6)
+      
     g.append('g')
       .attr('transform', `translate(0,${height})`)
-      .call(d3.axisBottom(xScale)
-        .tickFormat(d3.timeFormat('%d.%m') as any)
-        .ticks(6))
+      .call(bottomAxis)
       .selectAll('text')
       .style('font-size', '12px')
 

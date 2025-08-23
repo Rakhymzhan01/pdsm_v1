@@ -63,7 +63,14 @@ export function EnhancedProductionChart() {
       }
       
       return acc
-    }, {} as Record<string, any>)
+    }, {} as Record<string, {
+      totalOil: number;
+      totalWater: number;
+      totalLiquid: number;
+      waterCuts: number[];
+      wells: Set<string>;
+      dates: Date[];
+    }>)
 
     // Convert to monthly aggregated data
     const monthlyData = Object.entries(grouped)
@@ -341,11 +348,13 @@ export function EnhancedProductionChart() {
       })
 
     // Axes with custom styling
+    const bottomAxis = d3.axisBottom(xScale)
+      .tickFormat((d) => d3.timeFormat('%m.%Y')(d as Date))
+      .ticks(Math.min(aggregatedData.length, 6))
+      
     const xAxis = g.append('g')
       .attr('transform', `translate(0,${height})`)
-      .call(d3.axisBottom(xScale)
-        .tickFormat(d3.timeFormat('%m.%Y') as any)
-        .ticks(Math.min(aggregatedData.length, 6)))
+      .call(bottomAxis)
 
     xAxis.selectAll('text')
       .style('font-size', '12px')
@@ -399,7 +408,7 @@ export function EnhancedProductionChart() {
       const statsPanel = svg.append('g')
         .attr('transform', `translate(${width + margin.left - 90}, ${margin.top + 10})`)
 
-      const statsBox = statsPanel.append('rect')
+      statsPanel.append('rect')
         .attr('width', 85)
         .attr('height', 75)
         .attr('rx', 6)
