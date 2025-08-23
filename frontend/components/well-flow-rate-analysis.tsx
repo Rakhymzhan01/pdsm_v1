@@ -112,9 +112,12 @@ export function WellFlowRateAnalysis() {
     const handleResize = () => {
       if (svgRef.current?.parentElement) {
         const parentWidth = svgRef.current.parentElement.clientWidth
+        const isMobile = window.innerWidth < 768
+        const isTablet = window.innerWidth < 1024
+        
         setDimensions({
-          width: Math.max(parentWidth - 40, 600),
-          height: 350
+          width: Math.max(parentWidth - 40, isMobile ? 350 : 600),
+          height: isMobile ? 300 : isTablet ? 350 : 400
         })
       }
     }

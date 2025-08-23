@@ -2,9 +2,9 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { WellFlowRateAnalysis } from "@/components/well-flow-rate-analysis"
+import { DeclineCurveAnalysis } from "@/components/decline-curve-analysis"
 import { 
   Activity, 
-  TrendingUp, 
   Droplets, 
   Gauge, 
   Zap,
@@ -69,9 +69,9 @@ export default function AnalysisPage() {
         </Card>
       </div>
 
-      {/* Main Analysis Charts */}
-      <div className="grid gap-4 md:grid-cols-2">
-        {/* Production Analysis */}
+      {/* Main Analysis Charts - Adaptive Layout */}
+      <div className="space-y-4">
+        {/* Production Analysis - Full Width */}
         <Card>
           <CardHeader>
             <CardTitle>Анализ добычи</CardTitle>
@@ -82,22 +82,14 @@ export default function AnalysisPage() {
           </CardContent>
         </Card>
 
-        {/* Decline Curve Analysis */}
+        {/* Decline Curve Analysis - Full Width */}
         <Card>
           <CardHeader>
             <CardTitle>Кривые падения</CardTitle>
             <CardDescription>Прогноз добычи по характеристикам вытеснения</CardDescription>
           </CardHeader>
           <CardContent>
-            <div className="h-[300px] bg-muted rounded-lg flex items-center justify-center">
-              <div className="text-center">
-                <TrendingUp className="h-12 w-12 mx-auto mb-4 text-muted-foreground" />
-                <p className="text-muted-foreground">Анализ падения дебита</p>
-                <p className="text-xs text-muted-foreground mt-2">
-                  Экспоненциальная и гиперболическая модели
-                </p>
-              </div>
-            </div>
+            <DeclineCurveAnalysis />
           </CardContent>
         </Card>
       </div>
