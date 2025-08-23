@@ -1,9 +1,9 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
+import { WellFlowRateAnalysis } from "@/components/well-flow-rate-analysis"
 import { 
   Activity, 
-  BarChart3, 
   TrendingUp, 
   Droplets, 
   Gauge, 
@@ -78,15 +78,7 @@ export default function AnalysisPage() {
             <CardDescription>Динамика дебитов по скважинам</CardDescription>
           </CardHeader>
           <CardContent>
-            <div className="h-[300px] bg-muted rounded-lg flex items-center justify-center">
-              <div className="text-center">
-                <BarChart3 className="h-12 w-12 mx-auto mb-4 text-muted-foreground" />
-                <p className="text-muted-foreground">График дебитов</p>
-                <p className="text-xs text-muted-foreground mt-2">
-                  Сравнительный анализ производительности
-                </p>
-              </div>
-            </div>
+            <WellFlowRateAnalysis />
           </CardContent>
         </Card>
 
